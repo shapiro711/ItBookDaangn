@@ -99,13 +99,10 @@
 		3F7DB0872BA59338005A531B /* ItBookDaangn */ = {
 			isa = PBXGroup;
 			children = (
-				3F7DB0882BA59338005A531B /* AppDelegate.swift */,
-				3F7DB08A2BA59338005A531B /* SceneDelegate.swift */,
-				3F7DB08C2BA59338005A531B /* ViewController.swift */,
-				3F7DB08E2BA59338005A531B /* Main.storyboard */,
-				3F7DB0912BA59338005A531B /* Assets.xcassets */,
-				3F7DB0932BA59338005A531B /* LaunchScreen.storyboard */,
-				3F7DB0962BA59338005A531B /* Info.plist */,
+				3F7DB0BA2BA594DB005A531B /* Scene */,
+				3F7DB0B92BA594CB005A531B /* Resource */,
+				3F7DB0BB2BA594F8005A531B /* LaunchScreen */,
+				3F7DB0B82BA594BF005A531B /* Application */,
 			);
 			path = ItBookDaangn;
 			sourceTree = "<group>";
@@ -125,6 +122,41 @@
 				3F7DB0AB2BA59339005A531B /* ItBookDaangnUITestsLaunchTests.swift */,
 			);
 			path = ItBookDaangnUITests;
+			sourceTree = "<group>";
+		};
+		3F7DB0B82BA594BF005A531B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3F7DB0882BA59338005A531B /* AppDelegate.swift */,
+				3F7DB08A2BA59338005A531B /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		3F7DB0B92BA594CB005A531B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3F7DB0912BA59338005A531B /* Assets.xcassets */,
+				3F7DB0962BA59338005A531B /* Info.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		3F7DB0BA2BA594DB005A531B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				3F7DB08C2BA59338005A531B /* ViewController.swift */,
+				3F7DB08E2BA59338005A531B /* Main.storyboard */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		3F7DB0BB2BA594F8005A531B /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3F7DB0932BA59338005A531B /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,7 +476,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z9X27XS2Q8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ItBookDaangn/Info.plist;
+				INFOPLIST_FILE = ItBookDaangn/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -472,7 +504,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Z9X27XS2Q8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ItBookDaangn/Info.plist;
+				INFOPLIST_FILE = ItBookDaangn/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
