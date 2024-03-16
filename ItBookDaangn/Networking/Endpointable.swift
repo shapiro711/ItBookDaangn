@@ -1,5 +1,5 @@
 //
-//  Requestable.swift
+//  EndPointable.swift
 //  ItBookDaangn
 //
 //  Created by Kim Do hyung on 3/16/24.
@@ -15,7 +15,7 @@ import Foundation
  - Authors: 김도형
  */
 
-protocol Requestable {
+protocol Endpointable {
     var baseUrl: URL { get }
     var path: String { get }
     var method: HttpMethod { get }
