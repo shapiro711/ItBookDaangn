@@ -70,9 +70,13 @@ final class SearchViewController: UIViewController {
 //MARK: - Networking
 extension SearchViewController {
     private func search() {
+        guard checkSearchBarText(), let searchText = searchBar.text else {
+            return
+        }
+        
         indicator.startAnimating()
         
-        searchBookRepository.searchBooks(query: "swift") { [weak self] result in
+        searchBookRepository.searchBooks(query: searchText) { [weak self] result in
             switch result {
             case .success(let data):
                 let model = data.compactMap(SearchBookModel.makeSearchBookModel(by:))
@@ -86,6 +90,14 @@ extension SearchViewController {
                 self?.collectionView.reloadData()
             }
         }
+    }
+    
+    private func checkSearchBarText() -> Bool {
+        // searchBar의 텍스트가 nil이거나 비어있는지 검사
+        guard let searchText = searchBar.text, !searchText.isEmpty else {
+            return false
+        }
+        return true
     }
 }
 
