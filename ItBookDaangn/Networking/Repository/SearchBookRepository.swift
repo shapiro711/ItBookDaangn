@@ -15,7 +15,12 @@ import Foundation
  - Authors: 김도형
  */
 
-final class SearchBookRepository {
+protocol BookSearchable {
+    func searchBooks(query: String,
+                     completion: @escaping (Result<[BookSearchResponse.Book], Error>) -> Void)
+}
+
+final class SearchBookRepository: BookSearchable {
     private let networkService: NetworkServiceable
 
     init(networkService: NetworkServiceable) {

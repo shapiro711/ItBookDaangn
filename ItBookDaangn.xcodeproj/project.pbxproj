@@ -21,6 +21,7 @@
 		3F44EE582BA6EF9900163606 /* UICollectionViewCell + ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE572BA6EF9900163606 /* UICollectionViewCell + ReuseIdentifier.swift */; };
 		3F44EE5B2BA6F1EA00163606 /* SearchBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE5A2BA6F1EA00163606 /* SearchBookModel.swift */; };
 		3F44EE5D2BA71E7800163606 /* UICollectionView + EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE5C2BA71E7800163606 /* UICollectionView + EmptyView.swift */; };
+		3F44EE5F2BA7220A00163606 /* SearchBookDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE5E2BA7220A00163606 /* SearchBookDIContainer.swift */; };
 		3F7DB0892BA59338005A531B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB0882BA59338005A531B /* AppDelegate.swift */; };
 		3F7DB08B2BA59338005A531B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB08A2BA59338005A531B /* SceneDelegate.swift */; };
 		3F7DB0922BA59338005A531B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F7DB0912BA59338005A531B /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		3F44EE572BA6EF9900163606 /* UICollectionViewCell + ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + ReuseIdentifier.swift"; sourceTree = "<group>"; };
 		3F44EE5A2BA6F1EA00163606 /* SearchBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookModel.swift; sourceTree = "<group>"; };
 		3F44EE5C2BA71E7800163606 /* UICollectionView + EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + EmptyView.swift"; sourceTree = "<group>"; };
+		3F44EE5E2BA7220A00163606 /* SearchBookDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookDIContainer.swift; sourceTree = "<group>"; };
 		3F7DB0852BA59338005A531B /* ItBookDaangn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookDaangn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7DB0882BA59338005A531B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F7DB08A2BA59338005A531B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				3F44EE592BA6F1DD00163606 /* Model */,
 				3F7DB0BD2BA595E4005A531B /* ViewController */,
+				3F44EE5E2BA7220A00163606 /* SearchBookDIContainer.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -470,6 +473,7 @@
 				3F7DB0C22BA5D3FD005A531B /* Endpointable.swift in Sources */,
 				3F7DB0C82BA5D57A005A531B /* NetworkService.swift in Sources */,
 				3F44EE3C2BA6A62200163606 /* SearchBookEndpoint.swift in Sources */,
+				3F44EE5F2BA7220A00163606 /* SearchBookDIContainer.swift in Sources */,
 				3F44EE3A2BA6A34800163606 /* ItBookEndpointable.swift in Sources */,
 				3F44EE512BA6BB2400163606 /* DetailBookRepository.swift in Sources */,
 				3F44EE5D2BA71E7800163606 /* UICollectionView + EmptyView.swift in Sources */,

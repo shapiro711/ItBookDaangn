@@ -18,7 +18,7 @@ import UIKit
 final class SearchViewController: UIViewController {
     //MARK: - Property
     private let collectionViewDataSource = SearchCollectionViewDataSource()
-    private let searchBookRepository = SearchBookRepository(networkService: NetworkService(sessionManager: SessionManager()))
+    private let searchBookRepository: BookSearchable
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -50,9 +50,10 @@ final class SearchViewController: UIViewController {
     }
     
     //MARK: - Initializer
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
+    init(searchBookRepository: BookSearchable) {
+         self.searchBookRepository = searchBookRepository
+         super.init(nibName: nil, bundle: nil)
+     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
