@@ -21,7 +21,7 @@ enum SearchBookEndpoint: ItBookEndpointable {
     var path: String {
         switch self {
         case .search(let query):
-            return "search/\(query)"
+            return "search/\(query.urlEncoded())"
         }
     }
 

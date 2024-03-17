@@ -21,7 +21,7 @@ enum DetailBookEndpoint: ItBookEndpointable {
     var path: String {
         switch self {
         case .fetchBook(let isbn13Identifier):
-            return "books/\(isbn13Identifier)"
+            return "books/\(isbn13Identifier.urlEncoded())"
         }
     }
 
