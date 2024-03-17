@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F44EE3A2BA6A34800163606 /* ItBookEndpointable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE392BA6A34800163606 /* ItBookEndpointable.swift */; };
+		3F44EE3C2BA6A62200163606 /* SearchBookEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE3B2BA6A62200163606 /* SearchBookEndpoint.swift */; };
 		3F7DB0892BA59338005A531B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB0882BA59338005A531B /* AppDelegate.swift */; };
 		3F7DB08B2BA59338005A531B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB08A2BA59338005A531B /* SceneDelegate.swift */; };
 		3F7DB0922BA59338005A531B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F7DB0912BA59338005A531B /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F44EE392BA6A34800163606 /* ItBookEndpointable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItBookEndpointable.swift; sourceTree = "<group>"; };
+		3F44EE3B2BA6A62200163606 /* SearchBookEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookEndpoint.swift; sourceTree = "<group>"; };
 		3F7DB0852BA59338005A531B /* ItBookDaangn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookDaangn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7DB0882BA59338005A531B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F7DB08A2BA59338005A531B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				3F7DB0C12BA5D3FD005A531B /* Endpointable.swift */,
+				3F44EE392BA6A34800163606 /* ItBookEndpointable.swift */,
+				3F44EE3B2BA6A62200163606 /* SearchBookEndpoint.swift */,
 			);
 			path = Endpoint;
 			sourceTree = "<group>";
@@ -368,6 +374,8 @@
 				3F7DB0CC2BA5DD08005A531B /* NetworkError.swift in Sources */,
 				3F7DB0C22BA5D3FD005A531B /* Endpointable.swift in Sources */,
 				3F7DB0C82BA5D57A005A531B /* NetworkService.swift in Sources */,
+				3F44EE3C2BA6A62200163606 /* SearchBookEndpoint.swift in Sources */,
+				3F44EE3A2BA6A34800163606 /* ItBookEndpointable.swift in Sources */,
 				3F7DB0D42BA69BB6005A531B /* BookDetailResponse.swift in Sources */,
 				3F7DB0C62BA5D501005A531B /* HttpMethod.swift in Sources */,
 				3F7DB0BF2BA595F2005A531B /* SearchViewController.swift in Sources */,
