@@ -10,7 +10,7 @@ import Foundation
 /**
  실제 URLSession을 통한 통신 담당
  
- - Note: SessionManageable을 통한 추상화 유연성 확보
+ - Note: -
  - Date: 2023. 03. 16
  - Authors: 김도형
  */
