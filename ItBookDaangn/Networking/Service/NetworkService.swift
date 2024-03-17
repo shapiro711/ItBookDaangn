@@ -19,7 +19,6 @@ protocol NetworkServiceable {
     func request(endpoint: Endpointable, completion: @escaping (Result<Data, Error>) -> Void)
 }
 
-//
 struct NetworkResponse {
     let data: Data?
     let response: URLResponse?
@@ -33,7 +32,8 @@ final class NetworkService: NetworkServiceable {
         self.sessionManager = sessionManager
     }
     
-    func request(endpoint: Endpointable, completion: @escaping (Result<Data, Error>) -> Void) {
+    func request(endpoint: Endpointable,
+                 completion: @escaping (Result<Data, Error>) -> Void) {
         let urlRequest = generateRequest(from: endpoint)
         
         sessionManager.request(urlRequest: urlRequest) { [weak self] data, response, error in
@@ -44,7 +44,8 @@ final class NetworkService: NetworkServiceable {
         }
     }
     
-    private func handleResponse(networkResponse: NetworkResponse, completion: @escaping (Result<Data, Error>) -> Void) {
+    private func handleResponse(networkResponse: NetworkResponse, 
+                                completion: @escaping (Result<Data, Error>) -> Void) {
         if let error = networkResponse.error {
             completion(.failure(NetworkError.undefined(error)))
             return
