@@ -19,8 +19,15 @@ final class SearchCollectionViewDataSource: NSObject, UICollectionViewDataSource
     private var data: [SearchBookModel] = []
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(data.count)
-        return data.count
+        let count = data.count
+        
+        if count == .zero {
+            collectionView.setEmptyMessage("데이터가 없습니다.")
+        } else {
+            collectionView.restore()
+        }
+        
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

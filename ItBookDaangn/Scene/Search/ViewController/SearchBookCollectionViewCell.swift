@@ -95,7 +95,7 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
             thumbnailImageView.loadImage(from: imageUrl)
         }
         
-        if let linkUrl = model.linkUrl {
+        if model.linkUrl != nil {
             linkLabel.isHidden = false
         } else {
             linkLabel.isHidden = true
