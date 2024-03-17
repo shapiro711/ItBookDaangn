@@ -23,7 +23,7 @@ struct BookSearchResponse: Decodable {
     struct Book: Decodable {
         let title: String?
         let subtitle: String?
-        let isbn13Identifier: String
+        let isbn13Identifier: String?
         let price: String?
         let imageURL: URL?
         let linkUrl: URL?
