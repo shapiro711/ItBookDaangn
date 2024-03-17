@@ -70,13 +70,13 @@ final class SearchViewController: UIViewController {
 //MARK: - Networking
 extension SearchViewController {
     private func search() {
-        guard checkSearchBarText(), let searchText = searchBar.text else {
-            return
-        }
+//        guard checkSearchBarText(), let searchText = searchBar.text else {
+//            return
+//        }
         
         indicator.startAnimating()
         
-        searchBookRepository.searchBooks(query: searchText) { [weak self] result in
+        searchBookRepository.searchBooks(query: "swift") { [weak self] result in
             switch result {
             case .success(let data):
                 let model = data.compactMap(SearchBookModel.makeSearchBookModel(by:))

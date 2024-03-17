@@ -43,8 +43,9 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .preferredFont(forTextStyle: .headline)
         label.text = "title"
+        label.textColor = .orange
         return label
     }()
     
@@ -59,16 +60,17 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
     private lazy var identifierLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .body)
-        label.text = "isbn"
+        label.font = .preferredFont(forTextStyle: .caption1)
+        label.text = "isbnID: "
         return label
     }()
     
     private lazy var linkLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .body)
-        label.text = "link"
+        label.font = .preferredFont(forTextStyle: .caption1)
+        label.textColor = .blue
+        label.text = "링크"
         return label
     }()
     
@@ -81,6 +83,23 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Configure
+    func configure(by model: SearchBookModel) {
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
+        identifierLabel.text = "isbnID: \(model.isbn13Identifier)"
+        
+        if let imageUrl = model.imageUrl {
+            thumbnailImageView.loadImage(from: imageUrl)
+        }
+        
+        if let linkUrl = model.linkUrl {
+            linkLabel.isHidden = false
+        } else {
+            linkLabel.isHidden = true
+        }
     }
 }
 
@@ -98,9 +117,8 @@ extension SearchBookCollectionViewCell {
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(subtitleLabel)
         titleStackView.addArrangedSubview(informationStackView)
-        
-        informationStackView.addArrangedSubview(identifierLabel)
-        informationStackView.addArrangedSubview(linkLabel)
+        titleStackView.addArrangedSubview(identifierLabel)
+        titleStackView.addArrangedSubview(linkLabel)
     }
     
     private func setupConstraints() {
@@ -117,5 +135,17 @@ extension SearchBookCollectionViewCell {
             titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
         
+    }
+}
+
+extension UIImageView {
+    func loadImage(from url: URL) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let imageData = try? Data(contentsOf: url) {
+                DispatchQueue.main.async {
+                    self.image = UIImage(data: imageData)
+                }
+            }
+        }
     }
 }

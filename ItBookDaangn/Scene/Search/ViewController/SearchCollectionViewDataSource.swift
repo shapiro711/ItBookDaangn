@@ -19,13 +19,16 @@ final class SearchCollectionViewDataSource: NSObject, UICollectionViewDataSource
     private var data: [SearchBookModel] = []
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        print(data.count)
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchBookCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchBookCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        cell.configure(by: data[indexPath.row])
         
         return cell
     }
