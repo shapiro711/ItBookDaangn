@@ -47,7 +47,6 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupCollectionVivew()
-        search()
     }
     
     //MARK: - Initializer
@@ -69,32 +68,29 @@ final class SearchViewController: UIViewController {
 
 //MARK: - Networking
 extension SearchViewController {
-    private func search() {
-//        guard checkSearchBarText(), let searchText = searchBar.text else {
-//            return
-//        }
+    private func search(with keyword: String?) {
+        guard let keyword = keyword, checkSearchBarText(keyword) else { return }
         
         indicator.startAnimating()
         
-        searchBookRepository.searchBooks(query: "swift") { [weak self] result in
-            switch result {
-            case .success(let data):
-                let model = data.compactMap(SearchBookModel.makeSearchBookModel(by:))
-                self?.collectionViewDataSource.setupData(by: model)
-            case .failure(let _):
-                break
-            }
-            
+        searchBookRepository.searchBooks(query: keyword) { [weak self] result in
             DispatchQueue.main.async {
                 self?.indicator.stopAnimating()
-                self?.collectionView.reloadData()
+                
+                switch result {
+                case .success(let data):
+                    self?.collectionViewDataSource.setupData(by: data.compactMap(SearchBookModel.makeSearchBookModel(by:)))
+                    self?.collectionView.reloadData()
+                case .failure:
+                    break
+                }
             }
         }
     }
     
-    private func checkSearchBarText() -> Bool {
+    private func checkSearchBarText(_ keyword: String?) -> Bool {
         // searchBar의 텍스트가 nil이거나 비어있는지 검사
-        guard let searchText = searchBar.text, !searchText.isEmpty else {
+        guard let keyword = keyword, !keyword.isEmpty else {
             return false
         }
         return true
@@ -145,6 +141,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(false)
+        search(with: searchBar.text)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
