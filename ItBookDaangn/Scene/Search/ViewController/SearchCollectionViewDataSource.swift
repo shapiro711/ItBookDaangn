@@ -16,6 +16,8 @@ import UIKit
  */
 
 final class SearchCollectionViewDataSource: NSObject, UICollectionViewDataSource {
+    private var data: [SearchBookModel] = []
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
@@ -26,5 +28,12 @@ final class SearchCollectionViewDataSource: NSObject, UICollectionViewDataSource
         }
         
         return cell
+    }
+}
+
+//MARK: - Interface
+extension SearchCollectionViewDataSource {
+    func setupData(by model: [SearchBookModel]) {
+        self.data = model
     }
 }

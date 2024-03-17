@@ -18,6 +18,7 @@ import UIKit
 final class SearchViewController: UIViewController {
     //MARK: - Property
     private let collectionViewDataSource = SearchCollectionViewDataSource()
+    private let searchBookRepository = SearchBookRepository(networkService: NetworkService(sessionManager: SessionManager()))
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -35,11 +36,18 @@ final class SearchViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView()
+        indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        return indicatorView
+    }()
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupCollectionVivew()
+        search()
     }
     
     //MARK: - Initializer
@@ -59,6 +67,28 @@ final class SearchViewController: UIViewController {
     }
 }
 
+//MARK: - Networking
+extension SearchViewController {
+    private func search() {
+        indicator.startAnimating()
+        
+        searchBookRepository.searchBooks(query: "swift") { [weak self] result in
+            switch result {
+            case .success(let data):
+                let model = data.compactMap(SearchBookModel.makeSearchBookModel(by:))
+                self?.collectionViewDataSource.setupData(by: model)
+            case .failure(let _):
+                break
+            }
+            
+            DispatchQueue.main.async {
+                self?.indicator.stopAnimating()
+                self?.collectionView.reloadData()
+            }
+        }
+    }
+}
+
 //MARK: - SetupUI
 extension SearchViewController {
     private func setupUI() {
@@ -70,6 +100,7 @@ extension SearchViewController {
     private func buildHierarachy() {
         view.addSubview(searchBar)
         view.addSubview(collectionView)
+        view.addSubview(indicator)
     }
     
     private func setupConstraint() {
@@ -86,7 +117,10 @@ extension SearchViewController {
             collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            indicator.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor)
         ])
     }
 }
