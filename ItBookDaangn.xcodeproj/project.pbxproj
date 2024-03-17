@@ -16,6 +16,7 @@
 		3F44EE4D2BA6B32100163606 /* DecodingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE4C2BA6B32100163606 /* DecodingError.swift */; };
 		3F44EE4F2BA6B35400163606 /* DecodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE4E2BA6B35400163606 /* DecodingManager.swift */; };
 		3F44EE512BA6BB2400163606 /* DetailBookRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE502BA6BB2400163606 /* DetailBookRepository.swift */; };
+		3F44EE532BA6E5E400163606 /* SearchCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F44EE522BA6E5E400163606 /* SearchCollectionViewDataSource.swift */; };
 		3F7DB0892BA59338005A531B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB0882BA59338005A531B /* AppDelegate.swift */; };
 		3F7DB08B2BA59338005A531B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB08A2BA59338005A531B /* SceneDelegate.swift */; };
 		3F7DB0922BA59338005A531B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F7DB0912BA59338005A531B /* Assets.xcassets */; };
@@ -60,6 +61,7 @@
 		3F44EE4C2BA6B32100163606 /* DecodingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingError.swift; sourceTree = "<group>"; };
 		3F44EE4E2BA6B35400163606 /* DecodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingManager.swift; sourceTree = "<group>"; };
 		3F44EE502BA6BB2400163606 /* DetailBookRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookRepository.swift; sourceTree = "<group>"; };
+		3F44EE522BA6E5E400163606 /* SearchCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		3F7DB0852BA59338005A531B /* ItBookDaangn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItBookDaangn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F7DB0882BA59338005A531B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F7DB08A2BA59338005A531B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				3F7DB0BE2BA595F2005A531B /* SearchViewController.swift */,
+				3F44EE522BA6E5E400163606 /* SearchCollectionViewDataSource.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				3F44EE512BA6BB2400163606 /* DetailBookRepository.swift in Sources */,
 				3F7DB0D42BA69BB6005A531B /* BookDetailResponse.swift in Sources */,
 				3F7DB0C62BA5D501005A531B /* HttpMethod.swift in Sources */,
+				3F44EE532BA6E5E400163606 /* SearchCollectionViewDataSource.swift in Sources */,
 				3F44EE4D2BA6B32100163606 /* DecodingError.swift in Sources */,
 				3F44EE492BA6B0BB00163606 /* SearchBookRepository.swift in Sources */,
 				3F44EE4F2BA6B35400163606 /* DecodingManager.swift in Sources */,
