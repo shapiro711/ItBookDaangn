@@ -31,7 +31,6 @@ final class SearchViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .red
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -40,6 +39,7 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupCollectionVivew()
     }
     
     //MARK: - Initializer
@@ -49,12 +49,13 @@ final class SearchViewController: UIViewController {
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
-        fatalError("This class does not support NSCoder")
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupCollectionVivew() {
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = self
+        collectionView.register(SearchBookCollectionViewCell.self, forCellWithReuseIdentifier: SearchBookCollectionViewCell.reuseIdentifier)
     }
 }
 
@@ -111,6 +112,6 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // 셀의 크기를 설정
-        return CGSize(width: collectionView.frame.width - 32, height: 50)
+        return CGSize(width: collectionView.frame.width, height: 140)
     }
 }

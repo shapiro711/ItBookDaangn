@@ -17,10 +17,14 @@ import UIKit
 
 final class SearchCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return .zero
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchBookCollectionViewCell.reuseIdentifier, for: indexPath) as? SearchBookCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        return cell
     }
 }
