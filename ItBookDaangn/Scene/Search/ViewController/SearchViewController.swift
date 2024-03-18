@@ -19,6 +19,7 @@ final class SearchViewController: UIViewController {
     //MARK: - Property
     private let collectionViewDataSource = SearchCollectionViewDataSource()
     private let searchBookRepository: BookSearchable
+    private var isDataLoading: Bool = false
     
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -70,18 +71,19 @@ final class SearchViewController: UIViewController {
 //MARK: - Networking
 extension SearchViewController {
     private func search(with keyword: String?) {
-        guard let keyword = keyword, checkSearchBarText(keyword) else { return }
+        guard let keyword = keyword, !keyword.isEmpty else { return }
         
+        isDataLoading = true
         indicator.startAnimating()
         
         searchBookRepository.searchBooks(query: keyword) { [weak self] result in
             DispatchQueue.main.async {
+                self?.isDataLoading = false
                 self?.indicator.stopAnimating()
                 
                 switch result {
                 case .success(let data):
-                    self?.collectionViewDataSource.setupData(by: data.compactMap(SearchBookModel.makeSearchBookModel(by:)))
-                    self?.collectionView.reloadData()
+                    self?.handleSearchResult(data)
                 case .failure:
                     break
                 }
@@ -89,12 +91,15 @@ extension SearchViewController {
         }
     }
     
-    private func checkSearchBarText(_ keyword: String?) -> Bool {
-        // searchBar의 텍스트가 nil이거나 비어있는지 검사
-        guard let keyword = keyword, !keyword.isEmpty else {
-            return false
+    private func handleSearchResult(_ data: [BookSearchResponse.Book]) {
+        guard !data.isEmpty else { return }
+        
+        if searchBookRepository.pageInformation.currentPage == 1 {
+            collectionViewDataSource.setupData(by: data.compactMap(SearchBookModel.makeSearchBookModel(by:)))
+        } else {
+            collectionViewDataSource.appendData(by: data.compactMap(SearchBookModel.makeSearchBookModel(by:)))
         }
-        return true
+        collectionView.reloadData()
     }
 }
 
@@ -128,6 +133,7 @@ extension SearchViewController {
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             
+            //Indicator constraints
             indicator.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor),
             indicator.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor)
         ])
@@ -141,7 +147,6 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(false)
         search(with: searchBar.text)
     }
     
@@ -155,7 +160,17 @@ extension SearchViewController: UISearchBarDelegate {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // 셀의 크기를 설정
         return CGSize(width: collectionView.frame.width, height: 140)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let frameHeight = scrollView.frame.size.height
+        
+        if offsetY > contentHeight - frameHeight && !isDataLoading {
+            guard let currentQuery = searchBar.text else { return }
+            search(with: currentQuery)
+        }
     }
 }

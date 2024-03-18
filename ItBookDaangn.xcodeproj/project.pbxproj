@@ -37,6 +37,7 @@
 		3F7DB0CC2BA5DD08005A531B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB0CB2BA5DD08005A531B /* NetworkError.swift */; };
 		3F7DB0D42BA69BB6005A531B /* BookDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB0D32BA69BB6005A531B /* BookDetailResponse.swift */; };
 		3F7DB0D72BA69FFF005A531B /* BookSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7DB0D62BA69FFF005A531B /* BookSearchResponse.swift */; };
+		3FAC9FFE2BA7C897009D253B /* Paginationable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAC9FFD2BA7C897009D253B /* Paginationable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		3F7DB0CB2BA5DD08005A531B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		3F7DB0D32BA69BB6005A531B /* BookDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailResponse.swift; sourceTree = "<group>"; };
 		3F7DB0D62BA69FFF005A531B /* BookSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchResponse.swift; sourceTree = "<group>"; };
+		3FAC9FFD2BA7C897009D253B /* Paginationable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paginationable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				3F44EE482BA6B0BB00163606 /* SearchBookRepository.swift */,
 				3F44EE502BA6BB2400163606 /* DetailBookRepository.swift */,
+				3FAC9FFD2BA7C897009D253B /* Paginationable.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				3F44EE432BA6AC1500163606 /* String + UrlEncode.swift in Sources */,
 				3F7DB0BF2BA595F2005A531B /* SearchViewController.swift in Sources */,
 				3F7DB08B2BA59338005A531B /* SceneDelegate.swift in Sources */,
+				3FAC9FFE2BA7C897009D253B /* Paginationable.swift in Sources */,
 				3F7DB0CA2BA5D75A005A531B /* SessionManager.swift in Sources */,
 				3F44EE462BA6AC7900163606 /* Optional + Defaults.swift in Sources */,
 			);

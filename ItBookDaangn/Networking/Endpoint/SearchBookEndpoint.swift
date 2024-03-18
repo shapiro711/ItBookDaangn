@@ -16,12 +16,13 @@ import Foundation
  */
 
 enum SearchBookEndpoint: ItBookEndpointable {
-    case search(query: String)
+    case search(query: String, page: Int)
     
     var path: String {
         switch self {
-        case .search(let query):
-            return "search/\(query.urlEncoded())"
+        case .search(let query, let page):
+            let pageString = page.description
+            return "search/\(query.urlEncoded())/\(pageString.urlEncoded())"
         }
     }
 

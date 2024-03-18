@@ -46,4 +46,8 @@ extension SearchCollectionViewDataSource {
     func setupData(by model: [SearchBookModel]) {
         self.data = model
     }
+    
+    func appendData(by model: [SearchBookModel]) {
+        self.data.append(contentsOf: model)
+    }
 }
