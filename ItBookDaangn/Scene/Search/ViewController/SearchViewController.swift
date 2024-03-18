@@ -66,6 +66,14 @@ final class SearchViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(SearchBookCollectionViewCell.self, forCellWithReuseIdentifier: SearchBookCollectionViewCell.reuseIdentifier)
     }
+    
+    //MARK: - Routing
+    private func moveToDetail(identifier: String) {
+        let dependency = DetailBookDIContainer.Dependency(isbn13Identifier: identifier)
+        let diContainer = DetailBookDIContainer(dependency: dependency)
+        let detailViewController = diContainer.makeViewController()
+        self.navigationController?.pushViewController(detailViewController, animated: true)
+    }
 }
 
 //MARK: - Networking
@@ -161,6 +169,11 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 140)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let identifier = collectionViewDataSource.generateIdentifier(by: indexPath)
+        moveToDetail(identifier: identifier)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
