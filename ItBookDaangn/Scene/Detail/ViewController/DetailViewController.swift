@@ -1,0 +1,89 @@
+//
+//  DetailViewController.swift
+//  ItBookDaangn
+//
+//  Created by Kim Do hyung on 3/18/24.
+//
+
+import UIKit
+
+/**
+ 책 상세 화면 ViewController
+ 
+ - Note: -
+ - Date: 2023. 03. 18
+ - Authors: 김도형
+ */
+
+final class DetailViewController: UIViewController {
+    //MARK: - Property
+    private let collectionViewDataSource = DetailCollectionViewDataSource()
+    
+    private lazy var collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicatorView = UIActivityIndicatorView()
+        indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        return indicatorView
+    }()
+    
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        setupCollectionVivew()
+    }
+    
+    //MARK: - Initializer
+    init() {
+         super.init(nibName: nil, bundle: nil)
+     }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupCollectionVivew() {
+        collectionView.dataSource = collectionViewDataSource
+        collectionView.delegate = self
+        collectionView.register(SearchBookCollectionViewCell.self, forCellWithReuseIdentifier: SearchBookCollectionViewCell.reuseIdentifier)
+    }
+}
+
+//MARK: - SetupUI
+extension DetailViewController {
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
+        buildHierarachy()
+        setupConstraint()
+    }
+    
+    private func buildHierarachy() {
+        view.addSubview(collectionView)
+    }
+    
+    private func setupConstraint() {
+        let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            //CollectionView constraints
+            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 140)
+    }
+}
