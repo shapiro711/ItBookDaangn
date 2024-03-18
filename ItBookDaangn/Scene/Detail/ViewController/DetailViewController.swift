@@ -52,7 +52,6 @@ final class DetailViewController: UIViewController {
     private func setupCollectionVivew() {
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = self
-        collectionView.register(SearchBookCollectionViewCell.self, forCellWithReuseIdentifier: SearchBookCollectionViewCell.reuseIdentifier)
     }
 }
 
