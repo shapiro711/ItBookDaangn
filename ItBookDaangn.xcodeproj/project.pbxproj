@@ -44,6 +44,7 @@
 		3FACA0092BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0082BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift */; };
 		3FACA00B2BA8088E009D253B /* DetailBookDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA00A2BA8088E009D253B /* DetailBookDescriptionCollectionViewCell.swift */; };
 		3FACA00D2BA80BA5009D253B /* DetailBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA00C2BA80BA5009D253B /* DetailBookModel.swift */; };
+		3FACA00F2BA812B4009D253B /* DetailBookDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA00E2BA812B4009D253B /* DetailBookDIContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		3FACA0082BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookInformationCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FACA00A2BA8088E009D253B /* DetailBookDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FACA00C2BA80BA5009D253B /* DetailBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookModel.swift; sourceTree = "<group>"; };
+		3FACA00E2BA812B4009D253B /* DetailBookDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookDIContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +377,7 @@
 				3FACA0062BA7D26D009D253B /* DetailBookImageCollectionViewCell.swift */,
 				3FACA0082BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift */,
 				3FACA00A2BA8088E009D253B /* DetailBookDescriptionCollectionViewCell.swift */,
+				3FACA00E2BA812B4009D253B /* DetailBookDIContainer.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				3F7DB0D72BA69FFF005A531B /* BookSearchResponse.swift in Sources */,
 				3F7DB0CC2BA5DD08005A531B /* NetworkError.swift in Sources */,
 				3F7DB0C22BA5D3FD005A531B /* Endpointable.swift in Sources */,
+				3FACA00F2BA812B4009D253B /* DetailBookDIContainer.swift in Sources */,
 				3F7DB0C82BA5D57A005A531B /* NetworkService.swift in Sources */,
 				3F44EE3C2BA6A62200163606 /* SearchBookEndpoint.swift in Sources */,
 				3FACA0032BA7CDC5009D253B /* DetailViewController.swift in Sources */,

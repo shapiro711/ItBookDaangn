@@ -16,26 +16,7 @@ import UIKit
  */
 
 final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource {
-    enum CellType: Int, CaseIterable {
-        case image
-        case information
-        case description
-        
-        var reuseIdentifier: String {
-               switch self {
-               case .image:
-                   return DetailBookImageCollectionViewCell.reuseIdentifier
-               case .information:
-                   return DetailBookInformationCollectionViewCell.reuseIdentifier
-               case .description:
-                   return DetailBookDescriptionCollectionViewCell.reuseIdentifier
-               }
-           }
-        
-        var indexRow: Int {
-            return self.rawValue
-        }
-    }
+    private var data: DetailBookModel?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let numberOfItem = CellType.allCases.count
@@ -65,5 +46,34 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
         }
         
         return cell
+    }
+    
+    func setupData(by model: DetailBookModel) {
+        self.data = model
+    }
+    
+}
+
+//MARK: - CellType
+extension DetailCollectionViewDataSource {
+    enum CellType: Int, CaseIterable {
+        case image
+        case information
+        case description
+        
+        var reuseIdentifier: String {
+               switch self {
+               case .image:
+                   return DetailBookImageCollectionViewCell.reuseIdentifier
+               case .information:
+                   return DetailBookInformationCollectionViewCell.reuseIdentifier
+               case .description:
+                   return DetailBookDescriptionCollectionViewCell.reuseIdentifier
+               }
+           }
+        
+        var indexRow: Int {
+            return self.rawValue
+        }
     }
 }

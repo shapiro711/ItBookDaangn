@@ -18,6 +18,8 @@ import UIKit
 final class DetailViewController: UIViewController {
     //MARK: - Property
     private let collectionViewDataSource = DetailCollectionViewDataSource()
+    private let repository: BookDetailFetchhable
+    private let identifier: String
     
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -37,11 +39,14 @@ final class DetailViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupCollectionVivew()
+        fetchBookDetail()
     }
     
     //MARK: - Initializer
-    init() {
-         super.init(nibName: nil, bundle: nil)
+    init(repository: BookDetailFetchhable, identifier: String) {
+        self.repository = repository
+        self.identifier = identifier
+        super.init(nibName: nil, bundle: nil)
      }
     
     @available(*, unavailable)
@@ -52,6 +57,27 @@ final class DetailViewController: UIViewController {
     private func setupCollectionVivew() {
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = self
+    }
+}
+
+//MARK: - Networking
+extension DetailViewController {
+    func fetchBookDetail() {
+        repository.fetchBookDetails(isbn13Identifier: identifier) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self?.handleSearchResult(data)
+                case .failure:
+                    break
+                }
+            }
+        }
+    }
+    
+    private func handleSearchResult(_ data: BookDetailResponse) {
+        collectionViewDataSource.setupData(by: DetailBookModel.from(bookDetailResponse: data))
+        collectionView.reloadData()
     }
 }
 
