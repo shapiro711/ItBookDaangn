@@ -41,12 +41,9 @@ extension DetailBookModel {
         let publisher = bookDetailResponse.publisher ?? "출판사 정보 없음"
         let isbn10 = bookDetailResponse.isbn10 ?? "ISBN10 정보 없음"
         let isbn13 = bookDetailResponse.isbn13 ?? "ISBN13 정보 없음"
-        
-        let pagesString = bookDetailResponse.pages != nil ? "\(bookDetailResponse.pages!)" : "페이지 정보 없음"
+        let pagesString = bookDetailResponse.pages ?? "페이지 정보 없음"
         let year = bookDetailResponse.year ?? "년도 정보 없음"
-        
-        let ratingString = bookDetailResponse.rating != nil ? String(format: "%.1f", bookDetailResponse.rating!) : "평점 정보 없음"
-        
+        let ratingString = bookDetailResponse.rating ?? "평점 정보 없음"
         let description = bookDetailResponse.description ?? "설명 정보 없음"
         let price = bookDetailResponse.price ?? "가격 정보 없음"
         
