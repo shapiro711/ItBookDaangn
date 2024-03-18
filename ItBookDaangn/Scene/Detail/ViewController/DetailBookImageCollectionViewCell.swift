@@ -57,7 +57,7 @@ extension DetailBookImageCollectionViewCell {
             thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             thumbnailImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.leadingAnchor)
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
         
     }

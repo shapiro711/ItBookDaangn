@@ -37,7 +37,9 @@ final class DetailBookDescriptionCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Configure
-    func configure() {
+    func configure(by model: DetailBookModel?) {
+        guard let model = model else { return }
+        descriptionLabel.text = model.description
     }
 }
 
@@ -54,7 +56,6 @@ extension DetailBookDescriptionCollectionViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             descriptionLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.leadingAnchor)
         ])

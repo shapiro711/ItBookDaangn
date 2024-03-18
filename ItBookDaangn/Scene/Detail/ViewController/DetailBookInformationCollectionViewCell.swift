@@ -125,7 +125,16 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Configure
-    func configure() {
+    func configure(by model: DetailBookModel?) {
+        guard let model = model else { return }
+        ahtorLabel.text = "작가:" + model.authors
+        publisherLabel.text = "출판사:" + model.publisher
+        pageLabel.text = "페이지:" + model.pages
+        yearLabel.text = "출판 년도:" + model.year
+        ratingLabel.text = "평점:" + model.rating
+        priceLabel.text = "가격:" + model.price
+        isbn10IdentifierLabel.text = "isbn10:" + model.isbn10
+        isbn13IdentifierLabel.text = "isbn13:" + model.isbn13
     }
 }
 
@@ -153,7 +162,6 @@ extension DetailBookInformationCollectionViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             informationStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            informationStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             informationStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             informationStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])

@@ -33,15 +33,19 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
         switch cellType {
         case .image:
             if let cell = cell as? DetailBookImageCollectionViewCell {
-                
+                cell.configure(by: data?.imageUrl)
+            }
+        case .title:
+            if let cell = cell as? DetailBookTitleCollectionViewCell {
+                cell.configure(by: data)
             }
         case .information:
             if let cell = cell as? DetailBookInformationCollectionViewCell {
-                
+                cell.configure(by: data)
             }
         case .description:
             if let cell = cell as? DetailBookDescriptionCollectionViewCell {
-               
+                cell.configure(by: data)
             }
         }
         
@@ -58,6 +62,7 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
 extension DetailCollectionViewDataSource {
     enum CellType: Int, CaseIterable {
         case image
+        case title
         case information
         case description
         
@@ -65,6 +70,8 @@ extension DetailCollectionViewDataSource {
                switch self {
                case .image:
                    return DetailBookImageCollectionViewCell.reuseIdentifier
+               case .title:
+                   return DetailBookTitleCollectionViewCell.reuseIdentifier
                case .information:
                    return DetailBookInformationCollectionViewCell.reuseIdentifier
                case .description:

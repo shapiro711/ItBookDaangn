@@ -62,6 +62,7 @@ final class DetailViewController: UIViewController {
     
     private func registerCell() {
         collectionView.register(DetailBookImageCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookImageCollectionViewCell.reuseIdentifier)
+        collectionView.register(DetailBookTitleCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookTitleCollectionViewCell.reuseIdentifier)
         collectionView.register(DetailBookInformationCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookInformationCollectionViewCell.reuseIdentifier)
         collectionView.register(DetailBookDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookDescriptionCollectionViewCell.reuseIdentifier)
     }
@@ -116,6 +117,6 @@ extension DetailViewController {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 140)
+        return CGSize(width: collectionView.frame.width, height: 200)
     }
 }
