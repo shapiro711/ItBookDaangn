@@ -41,6 +41,7 @@
 		3FACA0032BA7CDC5009D253B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0022BA7CDC5009D253B /* DetailViewController.swift */; };
 		3FACA0052BA7CFA7009D253B /* DetailCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0042BA7CFA7009D253B /* DetailCollectionViewDataSource.swift */; };
 		3FACA0072BA7D26D009D253B /* DetailBookImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0062BA7D26D009D253B /* DetailBookImageCollectionViewCell.swift */; };
+		3FACA0092BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0082BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		3FACA0022BA7CDC5009D253B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3FACA0042BA7CFA7009D253B /* DetailCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		3FACA0062BA7D26D009D253B /* DetailBookImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		3FACA0082BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookInformationCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -366,6 +368,7 @@
 				3FACA0022BA7CDC5009D253B /* DetailViewController.swift */,
 				3FACA0042BA7CFA7009D253B /* DetailCollectionViewDataSource.swift */,
 				3FACA0062BA7D26D009D253B /* DetailBookImageCollectionViewCell.swift */,
+				3FACA0082BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				3FAC9FFE2BA7C897009D253B /* Paginationable.swift in Sources */,
 				3F7DB0CA2BA5D75A005A531B /* SessionManager.swift in Sources */,
 				3F44EE462BA6AC7900163606 /* Optional + Defaults.swift in Sources */,
+				3FACA0092BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
