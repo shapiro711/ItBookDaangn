@@ -35,7 +35,9 @@ final class DetailBookImageCollectionViewCell: UICollectionViewCell {
     }
     
     //MARK: - Configure
-    func configure() {
+    func configure(by imageUrl: URL?) {
+        guard let imageUrl = imageUrl else { return }
+        thumbnailImageView.loadImage(from: imageUrl)
     }
 }
 
