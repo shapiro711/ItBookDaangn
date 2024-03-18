@@ -15,6 +15,30 @@ import UIKit
  - Authors: 김도형
  */
 
+enum CellType: Int, CaseIterable {
+    case image
+    case title
+    case information
+    case description
+    
+    var reuseIdentifier: String {
+           switch self {
+           case .image:
+               return DetailBookImageCollectionViewCell.reuseIdentifier
+           case .title:
+               return DetailBookTitleCollectionViewCell.reuseIdentifier
+           case .information:
+               return DetailBookInformationCollectionViewCell.reuseIdentifier
+           case .description:
+               return DetailBookDescriptionCollectionViewCell.reuseIdentifier
+           }
+       }
+    
+    var indexRow: Int {
+        return self.rawValue
+    }
+}
+
 final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     private var data: DetailBookModel?
     
@@ -56,31 +80,4 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
         self.data = model
     }
     
-}
-
-//MARK: - CellType
-extension DetailCollectionViewDataSource {
-    enum CellType: Int, CaseIterable {
-        case image
-        case title
-        case information
-        case description
-        
-        var reuseIdentifier: String {
-               switch self {
-               case .image:
-                   return DetailBookImageCollectionViewCell.reuseIdentifier
-               case .title:
-                   return DetailBookTitleCollectionViewCell.reuseIdentifier
-               case .information:
-                   return DetailBookInformationCollectionViewCell.reuseIdentifier
-               case .description:
-                   return DetailBookDescriptionCollectionViewCell.reuseIdentifier
-               }
-           }
-        
-        var indexRow: Int {
-            return self.rawValue
-        }
-    }
 }

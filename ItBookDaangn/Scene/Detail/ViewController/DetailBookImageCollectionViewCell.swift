@@ -20,6 +20,7 @@ final class DetailBookImageCollectionViewCell: UICollectionViewCell {
     private lazy var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -56,8 +57,8 @@ extension DetailBookImageCollectionViewCell {
             //thumbnailImageView constraints
             thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             thumbnailImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
         
     }

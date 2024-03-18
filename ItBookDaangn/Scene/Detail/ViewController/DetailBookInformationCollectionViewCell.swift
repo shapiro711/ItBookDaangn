@@ -33,28 +33,17 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var isbn10IdentifierLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .caption1)
-        label.text = "isbn10ID: "
-        return label
-    }()
-    
-    private lazy var isbn13IdentifierLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .caption1)
-        label.text = "isbn20ID:"
+        label.font = .preferredFont(forTextStyle: .body)
         return label
     }()
     
     private lazy var ahtorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .caption1)
-        label.textColor = .blue
-        label.text = "작가:"
+        label.font = .preferredFont(forTextStyle: .body)
         return label
     }()
     
@@ -62,8 +51,6 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
-        label.textColor = .blue
-        label.text = "출판사:"
         return label
     }()
     
@@ -71,8 +58,6 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
-        label.textColor = .blue
-        label.text = "페이지:"
         return label
     }()
     
@@ -80,8 +65,6 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
-        label.textColor = .blue
-        label.text = "년도:"
         return label
     }()
     
@@ -89,17 +72,6 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
-        label.textColor = .blue
-        label.text = "평점:"
-        return label
-    }()
-    
-    private lazy var priceLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .preferredFont(forTextStyle: .caption1)
-        label.textColor = .blue
-        label.text = "가격:"
         return label
     }()
     
@@ -111,6 +83,21 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         label.text = "링크"
         return label
     }()
+    
+    private lazy var isbn10IdentifierLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .preferredFont(forTextStyle: .caption1)
+        return label
+    }()
+    
+    private lazy var isbn13IdentifierLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .preferredFont(forTextStyle: .caption1)
+        return label
+    }()
+    
     
     
     //MARK: - Initializer
@@ -147,12 +134,14 @@ extension DetailBookInformationCollectionViewCell {
     private func buildHierarchy() {
         contentView.addSubview(informationStackView)
         
+        
+        informationStackView.addArrangedSubview(priceLabel)
         informationStackView.addArrangedSubview(ahtorLabel)
         informationStackView.addArrangedSubview(publisherLabel)
         informationStackView.addArrangedSubview(pageLabel)
         informationStackView.addArrangedSubview(yearLabel)
         informationStackView.addArrangedSubview(ratingLabel)
-        informationStackView.addArrangedSubview(priceLabel)
+        
         informationStackView.addArrangedSubview(identifierStackView)
         
         identifierStackView.addArrangedSubview(isbn10IdentifierLabel)
@@ -162,8 +151,8 @@ extension DetailBookInformationCollectionViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             informationStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            informationStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            informationStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            informationStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            informationStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
         
     }

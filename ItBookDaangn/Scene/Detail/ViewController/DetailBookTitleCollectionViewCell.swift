@@ -78,8 +78,8 @@ extension DetailBookTitleCollectionViewCell {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             titleStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            titleStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            titleStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
     }
 }

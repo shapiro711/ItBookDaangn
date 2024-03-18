@@ -117,6 +117,23 @@ extension DetailViewController {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 200)
+        guard let cellType = CellType(rawValue: indexPath.row) else {
+            return .zero
+        }
+        
+        let width = collectionView.frame.width
+        
+        switch cellType {
+        case .image:
+            return CGSize(width: width, height: 300)
+        case .title:
+            return CGSize(width: width, height: 50)
+        case .information:
+            return CGSize(width: width, height: 130)
+        case .description:
+            return CGSize(width: width, height: 120)
+        }
+        
+        return .zero
     }
 }
