@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-        let searchViewController = SearchViewController()
+        let diContainer = SearchBookDIContainer()
+        let searchViewController = diContainer.makeViewController()
         window?.rootViewController = searchViewController
         window?.makeKeyAndVisible()
     }

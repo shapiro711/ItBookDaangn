@@ -25,13 +25,13 @@ struct BookSearchResponse: Decodable {
         let subtitle: String?
         let isbn13Identifier: String?
         let price: String?
-        let imageURL: URL?
+        let imageUrl: URL?
         let linkUrl: URL?
         
         enum CodingKeys: String, CodingKey {
             case title, subtitle, price
             case isbn13Identifier = "isbn13"
-            case imageURL = "image"
+            case imageUrl = "image"
             case linkUrl = "url"
         }
     }

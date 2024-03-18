@@ -15,27 +15,59 @@ import Foundation
  - Authors: 김도형
  */
 
-final class SearchBookRepository {
+protocol BookSearchable: Paginationable {
+    func searchBooks(query: String,
+                     completion: @escaping (Result<[BookSearchResponse.Book], Error>) -> Void)
+}
+
+final class SearchBookRepository: BookSearchable {
+    var pageInformation: PageInformation = PageInformation()
     private let networkService: NetworkServiceable
 
     init(networkService: NetworkServiceable) {
         self.networkService = networkService
     }
 
-    func searchBooks(query: String,
-                     completion: @escaping (Result<[BookSearchResponse.Book], Error>) -> Void) {
-        let endpoint = SearchBookEndpoint.search(query: query)
+    func searchBooks(query: String, completion: @escaping (Result<[BookSearchResponse.Book], Error>) -> Void) {
+        guard pageInformation.canFetchNextPage else { return }
         
-        networkService.request(endpoint: endpoint) { result in
-            let finalResult = result
-                .flatMap { data -> Result<BookSearchResponse, Error> in
-                    DecodingManager.decode(BookSearchResponse.self, from: data).mapError { $0 as Error }
+        let currentPage = pageInformation.currentPage + 1
+        let endpoint = SearchBookEndpoint.search(query: query, page: currentPage)
+        
+        networkService.request(endpoint: endpoint) { [weak self] result in
+            switch result {
+            case .success(let data):
+                do {
+                    let response = try self?.decodeBookSearchResponse(from: data)
+                    self?.updatePageInformation(with: response, currentPage: currentPage)
+                    completion(.success(response?.books ?? []))
+                } catch {
+                    completion(.failure(error))
                 }
-                .map { response -> [BookSearchResponse.Book] in
-                    response.books ?? []
-                }
-            
-            completion(finalResult)
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
+    }
+    
+    func decodeBookSearchResponse(from data: Data) throws -> BookSearchResponse {
+        do {
+            let decodedResponse = try JSONDecoder().decode(BookSearchResponse.self, from: data)
+            return decodedResponse
+        } catch {
+            throw error
+        }
+    }
+
+    func updatePageInformation(with response: BookSearchResponse?, currentPage: Int) {
+        guard let response = response, let fetchedBooksCount = response.books?.count else { return }
+        self.pageInformation.fetchedBooksCount += fetchedBooksCount
+        self.pageInformation.currentPage = currentPage
+        self.pageInformation.canFetchNextPage = self.pageInformation.fetchedBooksCount < (Int(response.total ?? "") ?? 0)
+    }
+    
+    func resetPage() {
+        pageInformation.canFetchNextPage = true
+        pageInformation.currentPage = 0
     }
 }
