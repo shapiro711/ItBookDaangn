@@ -47,7 +47,7 @@ final class DetailViewController: UIViewController {
         self.repository = repository
         self.identifier = identifier
         super.init(nibName: nil, bundle: nil)
-     }
+    }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -57,6 +57,7 @@ final class DetailViewController: UIViewController {
     private func setupCollectionVivew() {
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = self
+        collectionViewDataSource.setupDelegate(self)
         registerCell()
     }
     
@@ -65,6 +66,7 @@ final class DetailViewController: UIViewController {
         collectionView.register(DetailBookTitleCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookTitleCollectionViewCell.reuseIdentifier)
         collectionView.register(DetailBookInformationCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookInformationCollectionViewCell.reuseIdentifier)
         collectionView.register(DetailBookDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookDescriptionCollectionViewCell.reuseIdentifier)
+        collectionView.register(DetailBookPdfCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookPdfCollectionViewCell.reuseIdentifier)
     }
 }
 
@@ -117,7 +119,7 @@ extension DetailViewController {
 //MARK: - UICollectionViewDelegateFlowLayout
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cellType = CellType(rawValue: indexPath.row) else {
+        guard let cellType = DetailCellType(rawValue: indexPath.row) else {
             return .zero
         }
         
@@ -132,8 +134,26 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: 130)
         case .description:
             return CGSize(width: width, height: 120)
+        case .pdf:
+            return CGSize(width: width, height: 500)
+        }
+    }
+}
+
+extension DetailViewController: PDFCollectionViewCellDelegate {
+    func pdfCellDidSelectChapter(_ cell: DetailBookPdfCollectionViewCell) {
+        let alertController = UIAlertController(title: "Select Chapter", message: nil, preferredStyle: .actionSheet)
+        
+        for (chapterName, url) in collectionViewDataSource.generatePdf() {
+            let action = UIAlertAction(title: chapterName, style: .default) { _ in
+                cell.loadPDF(from: url)
+            }
+            alertController.addAction(action)
         }
         
-        return .zero
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

@@ -15,11 +15,12 @@ import UIKit
  - Authors: 김도형
  */
 
-enum CellType: Int, CaseIterable {
+enum DetailCellType: Int, CaseIterable {
     case image
     case title
     case information
     case description
+    case pdf
     
     var reuseIdentifier: String {
            switch self {
@@ -31,6 +32,8 @@ enum CellType: Int, CaseIterable {
                return DetailBookInformationCollectionViewCell.reuseIdentifier
            case .description:
                return DetailBookDescriptionCollectionViewCell.reuseIdentifier
+           case .pdf:
+               return DetailBookPdfCollectionViewCell.reuseIdentifier
            }
        }
     
@@ -41,14 +44,15 @@ enum CellType: Int, CaseIterable {
 
 final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     private var data: DetailBookModel?
+    private weak var pdfCellDelegate: PDFCollectionViewCellDelegate?
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numberOfItem = CellType.allCases.count
+        let numberOfItem = DetailCellType.allCases.count
         return numberOfItem
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cellType = CellType(rawValue: indexPath.row) else {
+        guard let cellType = DetailCellType(rawValue: indexPath.row) else {
             return UICollectionViewCell()
         }
         
@@ -71,6 +75,10 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
             if let cell = cell as? DetailBookDescriptionCollectionViewCell {
                 cell.configure(by: data)
             }
+        case .pdf:
+            if let cell = cell as? DetailBookPdfCollectionViewCell {
+                cell.delegate = self.pdfCellDelegate
+            }
         }
         
         return cell
@@ -78,6 +86,15 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
     
     func setupData(by model: DetailBookModel) {
         self.data = model
+    }
+    
+    func generatePdf() -> [String: URL] {
+        guard let chapterPdfUrls = data?.chapterPdfUrls else { return [:]}
+        return chapterPdfUrls
+    }
+    
+    func setupDelegate(_ delegate: PDFCollectionViewCellDelegate) {
+        self.pdfCellDelegate = delegate
     }
     
 }

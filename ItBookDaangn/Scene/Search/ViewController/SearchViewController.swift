@@ -114,9 +114,14 @@ extension SearchViewController {
 //MARK: - SetupUI
 extension SearchViewController {
     private func setupUI() {
-        view.backgroundColor = .systemBackground
+        setupViewStyle()
         buildHierarachy()
         setupConstraint()
+    }
+    
+    private func setupViewStyle() {
+        view.backgroundColor = .systemBackground
+        title = "검색"
     }
     
     private func buildHierarachy() {
