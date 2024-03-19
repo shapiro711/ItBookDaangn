@@ -47,6 +47,7 @@
 		3FACA00F2BA812B4009D253B /* DetailBookDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA00E2BA812B4009D253B /* DetailBookDIContainer.swift */; };
 		3FACA0112BA82DA2009D253B /* DetailBookTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0102BA82DA2009D253B /* DetailBookTitleCollectionViewCell.swift */; };
 		3FACA0132BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0122BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift */; };
+		3FACA0702BA99687009D253B /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA06F2BA99687009D253B /* ImageCacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		3FACA00E2BA812B4009D253B /* DetailBookDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookDIContainer.swift; sourceTree = "<group>"; };
 		3FACA0102BA82DA2009D253B /* DetailBookTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FACA0122BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookPdfCollectionViewCell.swift; sourceTree = "<group>"; };
+		3FACA06F2BA99687009D253B /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 		3F7DB0872BA59338005A531B /* ItBookDaangn */ = {
 			isa = PBXGroup;
 			children = (
+				3FACA06E2BA992E1009D253B /* ImageCache */,
 				3F44EE402BA6ABCC00163606 /* Utility */,
 				3F7DB0C02BA5D2A5005A531B /* Networking */,
 				3F7DB0BA2BA594DB005A531B /* Scene */,
@@ -420,6 +423,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		3FACA06E2BA992E1009D253B /* ImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				3FACA06F2BA99687009D253B /* ImageCacheManager.swift */,
+			);
+			path = ImageCache;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -570,6 +581,7 @@
 				3F7DB0C62BA5D501005A531B /* HttpMethod.swift in Sources */,
 				3F44EE582BA6EF9900163606 /* UICollectionViewCell + ReuseIdentifier.swift in Sources */,
 				3F44EE532BA6E5E400163606 /* SearchCollectionViewDataSource.swift in Sources */,
+				3FACA0702BA99687009D253B /* ImageCacheManager.swift in Sources */,
 				3F44EE4D2BA6B32100163606 /* DecodingError.swift in Sources */,
 				3F44EE492BA6B0BB00163606 /* SearchBookRepository.swift in Sources */,
 				3FACA0132BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift in Sources */,
