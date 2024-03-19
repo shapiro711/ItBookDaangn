@@ -92,8 +92,8 @@ extension SearchViewController {
                 switch result {
                 case .success(let data):
                     self?.handleSearchResult(data)
-                case .failure:
-                    break
+                case .failure(let error):
+                    self?.handleSearchErrorResult(error)
                 }
             }
         }
@@ -108,6 +108,11 @@ extension SearchViewController {
             collectionViewDataSource.appendData(by: data.compactMap(SearchBookModel.makeSearchBookModel(by:)))
         }
         collectionView.reloadData()
+    }
+    
+    private func handleSearchErrorResult(_ error: Error) {
+        let message = error.localizedDescription
+        ErrorAlert.show(from: self, message: message)
     }
 }
 

@@ -45,7 +45,7 @@ final class NetworkService: NetworkServiceable {
     private func handleResponse(networkResponse: NetworkResponse,
                                 completion: @escaping (Result<Data, Error>) -> Void) {
         if let error = networkResponse.error {
-            completion(.failure(NetworkError.undefined(error)))
+            completion(.failure(NetworkError.networkError(error)))
             return
         }
         guard let httpResponse = networkResponse.response as? HTTPURLResponse, self.isValidStatusCode(httpResponse.statusCode) else {
