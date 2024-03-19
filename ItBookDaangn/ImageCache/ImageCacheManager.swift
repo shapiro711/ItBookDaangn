@@ -18,6 +18,8 @@ import CommonCrypto
 
 final class ImageCacheManager {
     //MARK: - Property
+    static let shared = ImageCacheManager()
+    
     private let memoryCache = NSCache<NSString, UIImage>()
     private var ongoingTasks: [URL: URLSessionDataTask] = [:]
     private let diskCacheFilePath = "ImageCache"
@@ -25,7 +27,6 @@ final class ImageCacheManager {
     //MARK: - Interface
     /// 외부에서 이미지 다운로드를 위해 사용하는 메서드
     func downloadImage(with url: URL, completion: @escaping (UIImage?) -> Void) {
-        prepareForNewDownload(with: url)
         
         if let cachedImage = checkMemoryCache(for: url) {
             completion(cachedImage)
@@ -64,18 +65,18 @@ final class ImageCacheManager {
     // MARK: - Download
     private func downloadImageFromNetwork(url: URL, cacheFileURL: URL, completion: @escaping (UIImage?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let self = self, let data = data,
+            guard let data = data,
                   let image = UIImage(data: data),
                   error == nil else {
                 DispatchQueue.main.async { completion(nil) }
                 return
             }
 
-            self.memoryCache.setObject(image, forKey: url.absoluteString as NSString)
+            self?.memoryCache.setObject(image, forKey: url.absoluteString as NSString)
             try? data.write(to: cacheFileURL)
 
             DispatchQueue.main.async { completion(image) }
-            self.ongoingTasks.removeValue(forKey: url)
+            self?.ongoingTasks.removeValue(forKey: url)
         }
         ongoingTasks[url] = task
         task.resume()
@@ -84,12 +85,5 @@ final class ImageCacheManager {
     private func cancelOngoingDownload(for url: URL) {
         ongoingTasks[url]?.cancel()
         ongoingTasks.removeValue(forKey: url)
-    }
-    
-    /// 새 URL에 대한 요청이 들어오면 동일하지 않은 모든 이전 작업을 취소
-    private func prepareForNewDownload(with url: URL) {
-        for (taskUrl, _) in ongoingTasks where taskUrl != url {
-            cancelOngoingDownload(for: taskUrl)
-        }
     }
 }

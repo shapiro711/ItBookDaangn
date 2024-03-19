@@ -92,7 +92,7 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
         identifierLabel.text = "isbnID: \(model.isbn13Identifier)"
         
         if let imageUrl = model.imageUrl {
-            thumbnailImageView.loadImage(from: imageUrl)
+            thumbnailImageView.setImage(from: imageUrl)
         }
         
         if model.linkUrl != nil {
