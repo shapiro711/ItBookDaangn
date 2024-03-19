@@ -15,7 +15,12 @@ import Foundation
  - Authors: 김도형
  */
 
-final class BookDetailRepository {
+protocol BookDetailFetchhable {
+    func fetchBookDetails(isbn13Identifier: String,
+                          completion: @escaping (Result<BookDetailResponse, Error>) -> Void)
+}
+
+final class BookDetailRepository: BookDetailFetchhable {
     private let networkService: NetworkServiceable
 
     init(networkService: NetworkServiceable) {

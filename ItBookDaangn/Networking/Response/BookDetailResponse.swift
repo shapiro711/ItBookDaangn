@@ -20,12 +20,13 @@ struct BookDetailResponse: Decodable {
     let title: String?
     let subtitle: String?
     let authors: String?
+    let language: String?
     let publisher: String?
     let isbn10: String?
     let isbn13: String?
-    let pages: Int?
+    let pages: String?
     let year: String?
-    let rating: Double?
+    let rating: String?
     let description: String?
     let price: String?
     let imageUrl: URL?
@@ -33,7 +34,7 @@ struct BookDetailResponse: Decodable {
     let chapterPdfUrls: [String: URL]?
 
     enum CodingKeys: String, CodingKey {
-        case error, title, subtitle, authors, publisher, isbn10, isbn13, pages, year, rating, price
+        case error, title, subtitle, authors, publisher, isbn10, isbn13, pages, year, rating, price, language
         case description = "desc"
         case imageUrl = "image"
         case linkUrl = "url"

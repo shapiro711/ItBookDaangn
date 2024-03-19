@@ -50,4 +50,8 @@ extension SearchCollectionViewDataSource {
     func appendData(by model: [SearchBookModel]) {
         self.data.append(contentsOf: model)
     }
+    
+    func generateIdentifier(by index: IndexPath) -> String {
+        return self.data[index.row].isbn13Identifier
+    }
 }
