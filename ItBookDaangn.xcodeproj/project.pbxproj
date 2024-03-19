@@ -289,9 +289,10 @@
 		3F7DB0BC2BA595DE005A531B /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				3FACA06C2BA98EEA009D253B /* DIContainer */,
+				3FACA06D2BA98EFD009D253B /* View */,
 				3F44EE592BA6F1DD00163606 /* Model */,
 				3F7DB0BD2BA595E4005A531B /* ViewController */,
-				3F44EE5E2BA7220A00163606 /* SearchBookDIContainer.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -301,7 +302,6 @@
 			children = (
 				3F7DB0BE2BA595F2005A531B /* SearchViewController.swift */,
 				3F44EE522BA6E5E400163606 /* SearchCollectionViewDataSource.swift */,
-				3F44EE542BA6E80F00163606 /* SearchBookCollectionViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -359,8 +359,9 @@
 		3FAC9FFF2BA7CD9B009D253B /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				3FACA06B2BA98EDF009D253B /* DIContainer */,
+				3FACA06A2BA98ECC009D253B /* View */,
 				3FACA0012BA7CDAF009D253B /* ViewController */,
-				3FACA00E2BA812B4009D253B /* DetailBookDIContainer.swift */,
 				3FACA0002BA7CDA6009D253B /* Model */,
 			);
 			path = Detail;
@@ -379,13 +380,44 @@
 			children = (
 				3FACA0022BA7CDC5009D253B /* DetailViewController.swift */,
 				3FACA0042BA7CFA7009D253B /* DetailCollectionViewDataSource.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		3FACA06A2BA98ECC009D253B /* View */ = {
+			isa = PBXGroup;
+			children = (
 				3FACA0062BA7D26D009D253B /* DetailBookImageCollectionViewCell.swift */,
 				3FACA0082BA805C6009D253B /* DetailBookInformationCollectionViewCell.swift */,
 				3FACA00A2BA8088E009D253B /* DetailBookDescriptionCollectionViewCell.swift */,
 				3FACA0102BA82DA2009D253B /* DetailBookTitleCollectionViewCell.swift */,
 				3FACA0122BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift */,
 			);
-			path = ViewController;
+			path = View;
+			sourceTree = "<group>";
+		};
+		3FACA06B2BA98EDF009D253B /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				3FACA00E2BA812B4009D253B /* DetailBookDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		3FACA06C2BA98EEA009D253B /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				3F44EE5E2BA7220A00163606 /* SearchBookDIContainer.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		3FACA06D2BA98EFD009D253B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3F44EE542BA6E80F00163606 /* SearchBookCollectionViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
