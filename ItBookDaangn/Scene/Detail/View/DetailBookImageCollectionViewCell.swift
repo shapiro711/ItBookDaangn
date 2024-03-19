@@ -17,8 +17,8 @@ import UIKit
 
 final class DetailBookImageCollectionViewCell: UICollectionViewCell {
     //MARK: - Property
-    private lazy var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var thumbnailImageView: AsyncImageView = {
+        let imageView = AsyncImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
