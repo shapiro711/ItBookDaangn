@@ -17,8 +17,8 @@ import UIKit
 
 final class SearchBookCollectionViewCell: UICollectionViewCell {
     //MARK: - Property
-    private lazy var thumbnailImageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var thumbnailImageView: AsyncImageView = {
+        let imageView = AsyncImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 18
         imageView.layer.borderWidth = 1
@@ -87,12 +87,13 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Configure
     func configure(by model: SearchBookModel) {
+        let placeHolder = UIImage(systemName: "photo")
         titleLabel.text = model.title
         subtitleLabel.text = model.subtitle
         identifierLabel.text = "isbnID: \(model.isbn13Identifier)"
         
         if let imageUrl = model.imageUrl {
-            thumbnailImageView.setImage(from: imageUrl)
+            thumbnailImageView.loadImage(from: imageUrl, placeholder: placeHolder)
         }
         
         if model.linkUrl != nil {
@@ -135,17 +136,5 @@ extension SearchBookCollectionViewCell {
             titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
         
-    }
-}
-
-extension UIImageView {
-    func loadImage(from url: URL) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let imageData = try? Data(contentsOf: url) {
-                DispatchQueue.main.async {
-                    self.image = UIImage(data: imageData)
-                }
-            }
-        }
     }
 }

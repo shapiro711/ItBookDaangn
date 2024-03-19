@@ -38,7 +38,8 @@ final class ImageCacheManager {
             completion(diskImage)
             return
         }
-
+        
+        cancelOngoingDownloadTask(for: url)
         downloadImageFromNetwork(url: url, cacheFileURL: fileURL, completion: completion)
     }
 
@@ -75,15 +76,16 @@ final class ImageCacheManager {
             self?.memoryCache.setObject(image, forKey: url.absoluteString as NSString)
             try? data.write(to: cacheFileURL)
 
+            self?.ongoingTasks[url] = nil
             DispatchQueue.main.async { completion(image) }
-            self?.ongoingTasks.removeValue(forKey: url)
         }
         ongoingTasks[url] = task
         task.resume()
     }
     
-    private func cancelOngoingDownload(for url: URL) {
+    private func cancelOngoingDownloadTask(for url: URL) {
         ongoingTasks[url]?.cancel()
-        ongoingTasks.removeValue(forKey: url)
+        ongoingTasks[url] = nil
     }
+
 }
