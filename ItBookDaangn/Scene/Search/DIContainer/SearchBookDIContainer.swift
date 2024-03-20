@@ -5,6 +5,8 @@
 //  Created by Kim Do hyung on 3/17/24.
 //
 
+import Foundation
+
 /**
  책 검색 화면 DIContainer
  
@@ -12,8 +14,6 @@
  - Date: 2023. 03. 17
  - Authors: 김도형
  */
-
-import Foundation
 
 final class SearchBookDIContainer {
     func makeViewController() -> SearchViewController {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 /**
  책 상세 화면 DIContainer
  
@@ -13,8 +14,6 @@ import Foundation
  - Date: 2023. 03. 17
  - Authors: 김도형
  */
-
-import Foundation
 
 final class DetailBookDIContainer {
     

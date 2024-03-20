@@ -53,6 +53,7 @@
 		3FACA07A2BAA89CB009D253B /* DetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0792BAA89CB009D253B /* DetailCellType.swift */; };
 		3FACA07C2BAAA89E009D253B /* SearchBookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA07B2BAAA89E009D253B /* SearchBookTest.swift */; };
 		3FACA07F2BAAA8D7009D253B /* MockSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA07E2BAAA8D7009D253B /* MockSessionManager.swift */; };
+		3FACA0832BAAAB52009D253B /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0822BAAAB52009D253B /* MockNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		3FACA0792BAA89CB009D253B /* DetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellType.swift; sourceTree = "<group>"; };
 		3FACA07B2BAAA89E009D253B /* SearchBookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookTest.swift; sourceTree = "<group>"; };
 		3FACA07E2BAAA8D7009D253B /* MockSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionManager.swift; sourceTree = "<group>"; };
+		3FACA0822BAAAB52009D253B /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +452,7 @@
 			isa = PBXGroup;
 			children = (
 				3FACA07E2BAAA8D7009D253B /* MockSessionManager.swift */,
+				3FACA0822BAAAB52009D253B /* MockNetworkService.swift */,
 			);
 			path = NetworkMock;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FACA0832BAAAB52009D253B /* MockNetworkService.swift in Sources */,
 				3FACA07C2BAAA89E009D253B /* SearchBookTest.swift in Sources */,
 				3FACA07F2BAAA8D7009D253B /* MockSessionManager.swift in Sources */,
 				3F7DB0A02BA59339005A531B /* ItBookDaangnTests.swift in Sources */,
