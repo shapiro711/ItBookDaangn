@@ -49,6 +49,7 @@
 		3FACA0132BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0122BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift */; };
 		3FACA0702BA99687009D253B /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA06F2BA99687009D253B /* ImageCacheManager.swift */; };
 		3FACA0742BA9C333009D253B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0732BA9C333009D253B /* AsyncImageView.swift */; };
+		3FACA0762BA9EEB6009D253B /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0752BA9EEB6009D253B /* ErrorAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		3FACA0122BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookPdfCollectionViewCell.swift; sourceTree = "<group>"; };
 		3FACA06F2BA99687009D253B /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		3FACA0732BA9C333009D253B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		3FACA0752BA9EEB6009D253B /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,14 +189,15 @@
 			path = Decoding;
 			sourceTree = "<group>";
 		};
-		3F44EE562BA6EF7C00163606 /* Utility */ = {
+		3F44EE562BA6EF7C00163606 /* UIKit + Utility */ = {
 			isa = PBXGroup;
 			children = (
 				3FACA0732BA9C333009D253B /* AsyncImageView.swift */,
 				3F44EE572BA6EF9900163606 /* UICollectionViewCell + ReuseIdentifier.swift */,
 				3F44EE5C2BA71E7800163606 /* UICollectionView + EmptyView.swift */,
+				3FACA0752BA9EEB6009D253B /* ErrorAlert.swift */,
 			);
-			path = Utility;
+			path = "UIKit + Utility";
 			sourceTree = "<group>";
 		};
 		3F44EE592BA6F1DD00163606 /* Model */ = {
@@ -277,7 +280,7 @@
 		3F7DB0BA2BA594DB005A531B /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				3F44EE562BA6EF7C00163606 /* Utility */,
+				3F44EE562BA6EF7C00163606 /* UIKit + Utility */,
 				3FAC9FFF2BA7CD9B009D253B /* Detail */,
 				3F7DB0BC2BA595DE005A531B /* Search */,
 			);
@@ -587,6 +590,7 @@
 				3FACA0702BA99687009D253B /* ImageCacheManager.swift in Sources */,
 				3F44EE4D2BA6B32100163606 /* DecodingError.swift in Sources */,
 				3F44EE492BA6B0BB00163606 /* SearchBookRepository.swift in Sources */,
+				3FACA0762BA9EEB6009D253B /* ErrorAlert.swift in Sources */,
 				3FACA0132BA83AE1009D253B /* DetailBookPdfCollectionViewCell.swift in Sources */,
 				3FACA00B2BA8088E009D253B /* DetailBookDescriptionCollectionViewCell.swift in Sources */,
 				3FACA0052BA7CFA7009D253B /* DetailCollectionViewDataSource.swift in Sources */,

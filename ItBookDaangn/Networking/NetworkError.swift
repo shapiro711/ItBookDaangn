@@ -16,7 +16,20 @@ import Foundation
  */
 
 enum NetworkError: Error {
-    case undefined(Error)
+    case networkError(Error)
     case abnormalResponse
     case notExistData
+}
+
+extension NetworkError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .networkError:
+            return "네트워크 연결에 문제가 발생했습니다. 나중에 다시 시도해주세요."
+        case .abnormalResponse:
+            return "잘못된 요청입니다. 다시 시도해주세요."
+        case .notExistData:
+            return "데이터가 없습니다. 다시 시도해주세요."
+        }
+    }
 }

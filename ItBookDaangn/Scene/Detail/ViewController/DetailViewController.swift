@@ -77,17 +77,22 @@ extension DetailViewController {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
-                    self?.handleSearchResult(data)
-                case .failure:
-                    break
+                    self?.handleFetchDetailResult(data)
+                case .failure(let error):
+                    self?.handleFetchDetailError(error)
                 }
             }
         }
     }
     
-    private func handleSearchResult(_ data: BookDetailResponse) {
+    private func handleFetchDetailResult(_ data: BookDetailResponse) {
         collectionViewDataSource.setupData(by: DetailBookModel.from(bookDetailResponse: data))
         collectionView.reloadData()
+    }
+    
+    private func handleFetchDetailError(_ error: Error) {
+        let message = error.localizedDescription
+        ErrorAlert.show(from: self, message: message)
     }
 }
 
