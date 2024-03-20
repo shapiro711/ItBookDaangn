@@ -15,7 +15,7 @@ import Foundation
  - Authors: 김도형
  */
 
-struct BookDetailResponse: Decodable {
+struct BookDetailResponse: Codable {
     let error: String?
     let title: String?
     let subtitle: String?

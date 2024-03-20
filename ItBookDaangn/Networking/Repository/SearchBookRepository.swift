@@ -28,6 +28,7 @@ final class SearchBookRepository: BookSearchable {
         self.networkService = networkService
     }
 
+    /// 책 검색 실행
     func searchBooks(query: String, completion: @escaping (Result<[BookSearchResponse.Book], Error>) -> Void) {
         guard pageInformation.canFetchNextPage else { return }
         
@@ -50,6 +51,7 @@ final class SearchBookRepository: BookSearchable {
         }
     }
     
+    /// 리스폰스 디코딩
     func decodeBookSearchResponse(from data: Data) throws -> BookSearchResponse {
         do {
             let decodedResponse = try JSONDecoder().decode(BookSearchResponse.self, from: data)
@@ -59,6 +61,7 @@ final class SearchBookRepository: BookSearchable {
         }
     }
 
+    /// 페이지네이션 정보 업데이트
     func updatePageInformation(with response: BookSearchResponse?, currentPage: Int) {
         guard let response = response, let fetchedBooksCount = response.books?.count else { return }
         self.pageInformation.fetchedBooksCount += fetchedBooksCount
@@ -66,6 +69,7 @@ final class SearchBookRepository: BookSearchable {
         self.pageInformation.canFetchNextPage = self.pageInformation.fetchedBooksCount < (Int(response.total ?? "") ?? 0)
     }
     
+    /// 페이지네이션 리셋
     func resetPage() {
         pageInformation.canFetchNextPage = true
         pageInformation.currentPage = 0
