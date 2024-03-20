@@ -33,18 +33,10 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var informationStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        return stackView
-    }()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
-        label.text = "title"
         label.textColor = .orange
         return label
     }()
@@ -53,7 +45,6 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "subtitle"
         return label
     }()
     
@@ -61,7 +52,6 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
-        label.text = "isbnID: "
         return label
     }()
     
@@ -113,11 +103,9 @@ extension SearchBookCollectionViewCell {
     private func buildHierarchy() {
         contentView.addSubview(thumbnailImageView)
         contentView.addSubview(titleStackView)
-        contentView.addSubview(informationStackView)
         
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(subtitleLabel)
-        titleStackView.addArrangedSubview(informationStackView)
         titleStackView.addArrangedSubview(identifierLabel)
         titleStackView.addArrangedSubview(linkLabel)
     }
