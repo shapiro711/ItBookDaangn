@@ -1,5 +1,5 @@
 //
-//  BookDetailMockData.swift
+//  DetailBookMockData.swift
 //  ItBookDaangnTests
 //
 //  Created by Kim Do hyung on 3/20/24.
@@ -8,7 +8,7 @@
 import Foundation
 @testable import ItBookDaangn
 
-struct BookDetailMockData {
+struct DetailBookMockData {
     static func jsonResponseData() -> Data? {
         let jsonString = """
             {

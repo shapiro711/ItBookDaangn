@@ -54,8 +54,9 @@
 		3FACA07C2BAAA89E009D253B /* SearchBookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA07B2BAAA89E009D253B /* SearchBookTest.swift */; };
 		3FACA07F2BAAA8D7009D253B /* MockSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA07E2BAAA8D7009D253B /* MockSessionManager.swift */; };
 		3FACA0832BAAAB52009D253B /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0822BAAAB52009D253B /* MockNetworkService.swift */; };
-		3FACA0862BAAACC1009D253B /* BookDetailMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0852BAAACC1009D253B /* BookDetailMockData.swift */; };
+		3FACA0862BAAACC1009D253B /* DetailBookMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0852BAAACC1009D253B /* DetailBookMockData.swift */; };
 		3FACA0882BAAADAF009D253B /* TestBookDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0872BAAADAF009D253B /* TestBookDetailRepository.swift */; };
+		3FACA08D2BAABACE009D253B /* SearchBookMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA08C2BAABACE009D253B /* SearchBookMockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,8 +128,9 @@
 		3FACA07B2BAAA89E009D253B /* SearchBookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookTest.swift; sourceTree = "<group>"; };
 		3FACA07E2BAAA8D7009D253B /* MockSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionManager.swift; sourceTree = "<group>"; };
 		3FACA0822BAAAB52009D253B /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
-		3FACA0852BAAACC1009D253B /* BookDetailMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailMockData.swift; sourceTree = "<group>"; };
+		3FACA0852BAAACC1009D253B /* DetailBookMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookMockData.swift; sourceTree = "<group>"; };
 		3FACA0872BAAADAF009D253B /* TestBookDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBookDetailRepository.swift; sourceTree = "<group>"; };
+		3FACA08C2BAABACE009D253B /* SearchBookMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookMockData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 		3F7DB09E2BA59339005A531B /* ItBookDaangnTests */ = {
 			isa = PBXGroup;
 			children = (
+				3FACA08B2BAABA70009D253B /* SearchBook */,
 				3FACA0842BAAAC7A009D253B /* DetailBook */,
 				3FACA07D2BAAA8C4009D253B /* NetworkMock */,
 				3F7DB09F2BA59339005A531B /* ItBookDaangnTests.swift */,
@@ -465,10 +468,18 @@
 		3FACA0842BAAAC7A009D253B /* DetailBook */ = {
 			isa = PBXGroup;
 			children = (
-				3FACA0852BAAACC1009D253B /* BookDetailMockData.swift */,
+				3FACA0852BAAACC1009D253B /* DetailBookMockData.swift */,
 				3FACA0872BAAADAF009D253B /* TestBookDetailRepository.swift */,
 			);
 			path = DetailBook;
+			sourceTree = "<group>";
+		};
+		3FACA08B2BAABA70009D253B /* SearchBook */ = {
+			isa = PBXGroup;
+			children = (
+				3FACA08C2BAABACE009D253B /* SearchBookMockData.swift */,
+			);
+			path = SearchBook;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -647,11 +658,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FACA08D2BAABACE009D253B /* SearchBookMockData.swift in Sources */,
 				3FACA0832BAAAB52009D253B /* MockNetworkService.swift in Sources */,
 				3FACA07C2BAAA89E009D253B /* SearchBookTest.swift in Sources */,
 				3FACA07F2BAAA8D7009D253B /* MockSessionManager.swift in Sources */,
 				3FACA0882BAAADAF009D253B /* TestBookDetailRepository.swift in Sources */,
-				3FACA0862BAAACC1009D253B /* BookDetailMockData.swift in Sources */,
+				3FACA0862BAAACC1009D253B /* DetailBookMockData.swift in Sources */,
 				3F7DB0A02BA59339005A531B /* ItBookDaangnTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

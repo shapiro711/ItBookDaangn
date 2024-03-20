@@ -57,7 +57,7 @@ extension TestBookDetailRepository {
     /// 성공 환경 설정
     func givenSuccessEnvironment() -> BookDetailFetchhable {
         let mockSessionManager = MockSessionManager()
-        let mockData = BookDetailMockData.jsonResponseData()
+        let mockData = DetailBookMockData.jsonResponseData()
         
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
@@ -71,7 +71,7 @@ extension TestBookDetailRepository {
     /// 실패 환경 설정
     func givenFailEnvironment() -> BookDetailFetchhable {
         let mockSessionManager = MockSessionManager()
-        let mockData = BookDetailMockData.jsonResponseData()
+        let mockData = DetailBookMockData.jsonResponseData()
         
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 404, httpVersion: "HTTP/1.1", headerFields: nil)!
