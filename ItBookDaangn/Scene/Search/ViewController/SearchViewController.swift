@@ -81,13 +81,11 @@ extension SearchViewController {
     private func search(with keyword: String?) {
         guard let keyword = keyword, !keyword.isEmpty else { return }
         
-        isDataLoading = true
-        indicator.startAnimating()
+        startDataLoading()
         
         searchBookRepository.searchBooks(query: keyword) { [weak self] result in
             DispatchQueue.main.async {
-                self?.isDataLoading = false
-                self?.indicator.stopAnimating()
+                self?.stopDataLoading()
                 
                 switch result {
                 case .success(let data):
@@ -113,6 +111,16 @@ extension SearchViewController {
     private func handleSearchErrorResult(_ error: Error) {
         let message = error.localizedDescription
         ErrorAlert.show(from: self, message: message)
+    }
+    
+    private func startDataLoading() {
+        isDataLoading = true
+        indicator.startAnimating()
+    }
+
+    private func stopDataLoading() {
+        isDataLoading = false
+        indicator.stopAnimating()
     }
 }
 
