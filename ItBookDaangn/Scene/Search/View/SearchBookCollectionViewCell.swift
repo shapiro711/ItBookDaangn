@@ -58,6 +58,7 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
     private lazy var linkLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = true
         label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .blue
         label.text = "링크"
@@ -98,6 +99,7 @@ extension SearchBookCollectionViewCell {
     private func setupUI() {
         buildHierarchy()
         setupConstraints()
+        setupLinkLabelAction()
     }
     
     private func buildHierarchy() {
@@ -123,6 +125,20 @@ extension SearchBookCollectionViewCell {
             titleStackView.leadingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor, constant: 8),
             titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
-        
+    }
+}
+
+//MARK: - Action {
+extension SearchBookCollectionViewCell {
+    func setupLinkLabelAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openLink))
+        linkLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func openLink() {
+        guard let url = URL(string: "https://www.example.com") else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 }
