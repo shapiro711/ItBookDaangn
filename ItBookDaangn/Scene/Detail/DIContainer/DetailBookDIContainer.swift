@@ -17,11 +17,13 @@ import Foundation
 import Foundation
 
 final class DetailBookDIContainer {
+    
+    /// 외부에서 주입 받을 의존성
     struct Dependency {
         let isbn13Identifier: String
     }
     
-    let dependency: Dependency
+    private let dependency: Dependency
     
     init(dependency: Dependency) {
         self.dependency = dependency

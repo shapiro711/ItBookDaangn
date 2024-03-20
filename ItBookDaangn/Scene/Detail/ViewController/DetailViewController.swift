@@ -62,11 +62,11 @@ final class DetailViewController: UIViewController {
     }
     
     private func registerCell() {
-        collectionView.register(DetailBookImageCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookImageCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookTitleCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookTitleCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookInformationCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookInformationCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookDescriptionCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookPdfCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookPdfCollectionViewCell.reuseIdentifier)
+        collectionView.register(DetailBookImageCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.image.reuseIdentifier)
+        collectionView.register(DetailBookTitleCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.title.reuseIdentifier)
+        collectionView.register(DetailBookInformationCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.information.reuseIdentifier)
+        collectionView.register(DetailBookDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.description.reuseIdentifier)
+        collectionView.register(DetailBookPdfCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.pdf.reuseIdentifier)
     }
 }
 
@@ -129,19 +129,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         }
         
         let width = collectionView.frame.width
-        
-        switch cellType {
-        case .image:
-            return CGSize(width: width, height: 300)
-        case .title:
-            return CGSize(width: width, height: 50)
-        case .information:
-            return CGSize(width: width, height: 130)
-        case .description:
-            return CGSize(width: width, height: 120)
-        case .pdf:
-            return CGSize(width: width, height: 500)
-        }
+        return CGSize(width: width, height: cellType.height)
     }
 }
 

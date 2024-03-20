@@ -15,33 +15,6 @@ import UIKit
  - Authors: 김도형
  */
 
-enum DetailCellType: Int, CaseIterable {
-    case image
-    case title
-    case information
-    case description
-    case pdf
-    
-    var reuseIdentifier: String {
-           switch self {
-           case .image:
-               return DetailBookImageCollectionViewCell.reuseIdentifier
-           case .title:
-               return DetailBookTitleCollectionViewCell.reuseIdentifier
-           case .information:
-               return DetailBookInformationCollectionViewCell.reuseIdentifier
-           case .description:
-               return DetailBookDescriptionCollectionViewCell.reuseIdentifier
-           case .pdf:
-               return DetailBookPdfCollectionViewCell.reuseIdentifier
-           }
-       }
-    
-    var indexRow: Int {
-        return self.rawValue
-    }
-}
-
 final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     private var data: DetailBookModel?
     private weak var pdfCellDelegate: PDFCollectionViewCellDelegate?

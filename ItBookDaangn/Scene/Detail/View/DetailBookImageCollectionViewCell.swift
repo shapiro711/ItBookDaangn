@@ -54,7 +54,6 @@ extension DetailBookImageCollectionViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            //thumbnailImageView constraints
             thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             thumbnailImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
