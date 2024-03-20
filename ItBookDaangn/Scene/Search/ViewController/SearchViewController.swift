@@ -110,6 +110,11 @@ extension SearchViewController {
     }
     
     private func handleSearchErrorResult(_ error: Error) {
+        if let pagerror = error as? PageError,
+           pagerror == .endPage {
+            return 
+        }
+        
         let message = error.localizedDescription
         ErrorAlert.show(from: self, message: message)
     }
