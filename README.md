@@ -5,6 +5,9 @@
 |:--:|:--:|
 |<img width="200" alt="검색" src="https://github.com/shapiro711/ItBookDaangn/assets/57553889/200e9336-67b2-4f7a-bd0b-8e22b7a38ec7">|<img width="200" alt="상세" src="https://github.com/shapiro711/ItBookDaangn/assets/57553889/5a330894-41b3-4b73-8b1d-cfbb470a2e99">|
 
+- 검색: 책 검색 기능 구현, Pagination 기능 구현
+- 상세: 책 상세 정보 구현, PDF 정보 구현
+
 &nbsp;   
 
 ## 프로젝트 구성
