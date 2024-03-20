@@ -104,23 +104,29 @@ extension DetailViewController {
 extension DetailViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        title = "상세 정보"
         buildHierarachy()
         setupConstraint()
     }
     
     private func buildHierarachy() {
         view.addSubview(collectionView)
+        view.addSubview(indicator)
     }
     
     private func setupConstraint() {
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            //CollectionView constraints
+            //collectionView Constraints
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            //indicator Constraints
+            indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
