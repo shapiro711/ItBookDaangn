@@ -25,7 +25,6 @@ final class SearchViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.placeholder = "책을 검색해주세요"
-        searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         return searchBar
     }()
@@ -40,6 +39,8 @@ final class SearchViewController: UIViewController {
     private lazy var indicator: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorView.style = .large
+        indicatorView.color = .systemOrange
         return indicatorView
     }()
     
@@ -151,7 +152,6 @@ extension SearchViewController {
             searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             searchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            searchBar.heightAnchor.constraint(equalToConstant: 44),
             
             //CollectionView constraints
             collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
@@ -168,10 +168,6 @@ extension SearchViewController {
 
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBookRepository.resetPage()
         collectionViewDataSource.resetData()
@@ -179,7 +175,6 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
         searchBar.text = nil
         searchBar.resignFirstResponder()
     }
