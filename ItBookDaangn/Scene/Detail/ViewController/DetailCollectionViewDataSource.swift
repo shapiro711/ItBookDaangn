@@ -96,5 +96,4 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
     func setupDelegate(_ delegate: PDFCollectionViewCellDelegate) {
         self.pdfCellDelegate = delegate
     }
-    
 }

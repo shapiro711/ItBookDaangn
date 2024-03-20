@@ -165,6 +165,8 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBookRepository.resetPage()
+        collectionViewDataSource.resetData()
         search(with: searchBar.text)
     }
     

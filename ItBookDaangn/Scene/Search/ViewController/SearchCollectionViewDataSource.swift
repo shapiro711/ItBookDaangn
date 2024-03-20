@@ -51,6 +51,10 @@ extension SearchCollectionViewDataSource {
         self.data.append(contentsOf: model)
     }
     
+    func resetData() {
+        self.data.removeAll()
+    }
+    
     func generateIdentifier(by index: IndexPath) -> String {
         return self.data[index.row].isbn13Identifier
     }
