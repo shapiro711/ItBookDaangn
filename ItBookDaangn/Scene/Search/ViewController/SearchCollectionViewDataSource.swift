@@ -22,7 +22,8 @@ final class SearchCollectionViewDataSource: NSObject, UICollectionViewDataSource
         let count = data.count
         
         if count == .zero {
-            collectionView.setEmptyMessage("데이터가 없습니다.")
+            let message = "데이터가 없습니다."
+            collectionView.setEmptyMessage(message)
         } else {
             collectionView.restore()
         }

@@ -128,7 +128,7 @@ extension SearchBookCollectionViewCell {
     }
 }
 
-//MARK: - Action {
+//MARK: - Action
 extension SearchBookCollectionViewCell {
     func setupLinkLabelAction() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openLink))
