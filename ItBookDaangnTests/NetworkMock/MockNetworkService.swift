@@ -17,16 +17,27 @@ import Foundation
  */
 
 final class MockNetworkService: NetworkServiceable {
-    var sessionManager: SessionManageable = MockSessionManager()
+    var sessionManager: SessionManageable
+    
+    init(sessionManager: SessionManageable) {
+        self.sessionManager = sessionManager
+    }
 
     func request(endpoint: Endpointable, completion: @escaping (Result<Data, Error>) -> Void) {
         sessionManager.request(urlRequest: URLRequest(url: endpoint.baseUrl.appendingPathComponent(endpoint.path))) { data, response, error in
             if let error = error {
                 completion(.failure(error))
-            } else if let data = data {
+            } 
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if !(200...299).contains(httpResponse.statusCode) {
+                    completion(.failure(NSError(domain: "Test.HTTPStatusError", code: -1, userInfo: nil)))
+                    return
+                }
+            }
+                               
+            if let data = data {
                 completion(.success(data))
-            } else {
-                completion(.failure(NSError(domain: "com.example.error", code: -1, userInfo: nil)))
             }
         }
     }

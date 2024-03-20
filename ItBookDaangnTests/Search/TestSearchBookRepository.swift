@@ -8,6 +8,14 @@
 import XCTest
 @testable import ItBookDaangn
 
+/**
+ 책 검색 Repository 유닛테스트
+ 
+ - Note: 테스트 DIContainer를 통해 의존성 주입후 테스트 진행
+ - Date: 2023. 03. 20
+ - Authors: 김도형
+ */
+
 final class TestBookSearchRepository: XCTestCase {
     func testSearchBookPriceIs500() throws {
         // Given
@@ -56,29 +64,33 @@ final class TestBookSearchRepository: XCTestCase {
 extension TestBookSearchRepository {
     /// 성공 환경 설정
     func givenSuccessEnvironment() -> BookSearchable {
-        let mockSessionManager = MockSessionManager()
         let mockData = SearchBookMockData.jsonResponseData()
-        
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
-        mockSessionManager.mockResponse = response
-        mockSessionManager.mockData = mockData
         
-        let mockNetworkService = NetworkService(sessionManager: mockSessionManager)
-        return SearchBookRepository(networkService: mockNetworkService)
+        let depoendency = TestSearchBookDIContainer.Dependency(
+            data: mockData,
+            reponse: response,
+            error: nil)
+        
+        let diContainer = TestSearchBookDIContainer(dependency: depoendency)
+        
+        return diContainer.makeRepository()
     }
     
     /// 실패 환경 설정
     func givenFailEnvironment() -> BookSearchable {
-        let mockSessionManager = MockSessionManager()
         let mockData = SearchBookMockData.jsonResponseData()
-        
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 404, httpVersion: "HTTP/1.1", headerFields: nil)!
-        mockSessionManager.mockResponse = response
-        mockSessionManager.mockData = mockData
         
-        let mockNetworkService = NetworkService(sessionManager: mockSessionManager)
-        return SearchBookRepository(networkService: mockNetworkService)
+        let depoendency = TestSearchBookDIContainer.Dependency(
+            data: mockData,
+            reponse: response,
+            error: nil)
+        
+        let diContainer = TestSearchBookDIContainer(dependency: depoendency)
+        
+        return diContainer.makeRepository()
     }
 }

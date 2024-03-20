@@ -8,6 +8,14 @@
 import Foundation
 @testable import ItBookDaangn
 
+/**
+ 책 검색 MockData
+ 
+ - Note: -
+ - Date: 2023. 03. 20
+ - Authors: 김도형
+ */
+
 struct SearchBookMockData {
     static func jsonResponseData() -> Data? {
         let jsonString = """

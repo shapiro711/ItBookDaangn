@@ -8,6 +8,14 @@
 import XCTest
 @testable import ItBookDaangn
 
+/**
+ 책 상세 Repository 유닛테스트
+ 
+ - Note: 테스트 DIContainer를 통해 의존성 주입후 테스트 진행
+ - Date: 2023. 03. 20
+ - Authors: 김도형
+ */
+
 final class TestDetailBookRepository: XCTestCase {
     func testFetchBookDetailAuthorIsKimDoHyung() throws {
         // Given
@@ -56,29 +64,31 @@ final class TestDetailBookRepository: XCTestCase {
 extension TestDetailBookRepository {
     /// 성공 환경 설정
     func givenSuccessEnvironment() -> BookDetailFetchhable {
-        let mockSessionManager = MockSessionManager()
         let mockData = DetailBookMockData.jsonResponseData()
-        
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
-        mockSessionManager.mockResponse = response
-        mockSessionManager.mockData = mockData
         
-        let mockNetworkService = NetworkService(sessionManager: mockSessionManager)
-        return BookDetailRepository(networkService: mockNetworkService)
+        let depoendency = TestDetailDIContainer.Dependency(
+            data: mockData,
+            reponse: response,
+            error: nil)
+        let diContainer = TestDetailDIContainer(dependency: depoendency)
+        return diContainer.makeRepository()
     }
     
     /// 실패 환경 설정
     func givenFailEnvironment() -> BookDetailFetchhable {
-        let mockSessionManager = MockSessionManager()
         let mockData = DetailBookMockData.jsonResponseData()
-        
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 404, httpVersion: "HTTP/1.1", headerFields: nil)!
-        mockSessionManager.mockResponse = response
-        mockSessionManager.mockData = mockData
         
-        let mockNetworkService = NetworkService(sessionManager: mockSessionManager)
-        return BookDetailRepository(networkService: mockNetworkService)
+        let depoendency = TestDetailDIContainer.Dependency(
+            data: mockData,
+            reponse: response,
+            error: nil)
+        
+        let diContainer = TestDetailDIContainer(dependency: depoendency)
+        
+        return diContainer.makeRepository()
     }
 }

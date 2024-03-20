@@ -7,6 +7,14 @@
 
 import Foundation
 
+/**
+ 페이지네이션 로직 추상화 Protocol
+ 
+ - Note: -
+ - Date: 2023. 03. 10
+ - Authors: 김도형
+ */
+
 protocol Paginationable {
     var pageInformation: PageInformation { get set }
     func resetPage()
