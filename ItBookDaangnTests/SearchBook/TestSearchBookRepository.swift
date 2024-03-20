@@ -1,5 +1,5 @@
 //
-//  TestBookDetailRepository.swift
+//  TestBookSearchRepository.swift
 //  ItBookDaangnTests
 //
 //  Created by Kim Do hyung on 3/20/24.
@@ -8,19 +8,19 @@
 import XCTest
 @testable import ItBookDaangn
 
-final class TestBookDetailRepository: XCTestCase {
-    func testFetchBookDetailAuthorIsKimDoHyung() throws {
+final class TestBookSearchRepository: XCTestCase {
+    func testSearchBookPriceIs500() throws {
         // Given
         let repository = givenSuccessEnvironment()
-        let isbn13 = "1234567890"
-        let expectation = self.expectation(description: "FetchBookDetailAuthorIsKimDoHyung")
+        let query = "test"
+        let expectation = self.expectation(description: "BookPriceIs500")
         
         // When
-        repository.fetchBookDetails(isbn13Identifier: isbn13) { result in
+        repository.searchBooks(query: query) { result in
             // Then
             switch result {
-            case .success(let bookDetail):
-                XCTAssertEqual(bookDetail.authors, "김도형", "김도형이 아니다")
+            case .success(let searchResult):
+                XCTAssertEqual(searchResult.first?.price, "오백원", "오백원 아니다")
                 expectation.fulfill()
             case .failure(_):
                 XCTFail("에러 발생")
@@ -30,14 +30,14 @@ final class TestBookDetailRepository: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
     }
     
-    func testFetchBookDetailFailureWithStatusCode() throws {
+    func testSearchBookFailureWithStatusCode() throws {
         // Given
         let repository = givenFailEnvironment()
-        let isbn13 = "1234567890"
-        let expectation = self.expectation(description: "FetchBookDetailFailureWithStatusCode")
+        let query = "test"
+        let expectation = self.expectation(description: "SearchBookFailureWithStatusCode")
         
         // When
-        repository.fetchBookDetails(isbn13Identifier: isbn13) { result in
+        repository.searchBooks(query: query) { result in
             // Then
             switch result {
             case .success(_):
@@ -53,11 +53,11 @@ final class TestBookDetailRepository: XCTestCase {
 }
 
 //MARK: - Make Environment
-extension TestBookDetailRepository {
+extension TestBookSearchRepository {
     /// 성공 환경 설정
-    func givenSuccessEnvironment() -> BookDetailFetchhable {
+    func givenSuccessEnvironment() -> BookSearchable {
         let mockSessionManager = MockSessionManager()
-        let mockData = DetailBookMockData.jsonResponseData()
+        let mockData = SearchBookMockData.jsonResponseData()
         
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
@@ -65,13 +65,13 @@ extension TestBookDetailRepository {
         mockSessionManager.mockData = mockData
         
         let mockNetworkService = NetworkService(sessionManager: mockSessionManager)
-        return BookDetailRepository(networkService: mockNetworkService)
+        return SearchBookRepository(networkService: mockNetworkService)
     }
     
     /// 실패 환경 설정
-    func givenFailEnvironment() -> BookDetailFetchhable {
+    func givenFailEnvironment() -> BookSearchable {
         let mockSessionManager = MockSessionManager()
-        let mockData = DetailBookMockData.jsonResponseData()
+        let mockData = SearchBookMockData.jsonResponseData()
         
         let testUrl = URL(string: "https://example.com")!
         let response = HTTPURLResponse(url: testUrl, statusCode: 404, httpVersion: "HTTP/1.1", headerFields: nil)!
@@ -79,6 +79,6 @@ extension TestBookDetailRepository {
         mockSessionManager.mockData = mockData
         
         let mockNetworkService = NetworkService(sessionManager: mockSessionManager)
-        return BookDetailRepository(networkService: mockNetworkService)
+        return SearchBookRepository(networkService: mockNetworkService)
     }
 }

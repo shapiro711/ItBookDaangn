@@ -21,8 +21,8 @@ struct SearchBookMockData {
                     "subtitle": "스위프트서브타이틀",
                     "isbn13": "9781617291609",
                     "price": "오백원",
-                    "image": "",
-                    "url": ""
+                    "image": "testurl",
+                    "url": "testurl"
                 }
             ]
         }
