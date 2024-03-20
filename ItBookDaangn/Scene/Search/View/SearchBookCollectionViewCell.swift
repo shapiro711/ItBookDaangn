@@ -33,18 +33,10 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    private lazy var informationStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        return stackView
-    }()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .headline)
-        label.text = "title"
         label.textColor = .orange
         return label
     }()
@@ -53,7 +45,6 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .body)
-        label.text = "subtitle"
         return label
     }()
     
@@ -61,13 +52,13 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .preferredFont(forTextStyle: .caption1)
-        label.text = "isbnID: "
         return label
     }()
     
     private lazy var linkLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = true
         label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .blue
         label.text = "링크"
@@ -108,16 +99,15 @@ extension SearchBookCollectionViewCell {
     private func setupUI() {
         buildHierarchy()
         setupConstraints()
+        setupLinkLabelAction()
     }
     
     private func buildHierarchy() {
         contentView.addSubview(thumbnailImageView)
         contentView.addSubview(titleStackView)
-        contentView.addSubview(informationStackView)
         
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(subtitleLabel)
-        titleStackView.addArrangedSubview(informationStackView)
         titleStackView.addArrangedSubview(identifierLabel)
         titleStackView.addArrangedSubview(linkLabel)
     }
@@ -135,6 +125,20 @@ extension SearchBookCollectionViewCell {
             titleStackView.leadingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor, constant: 8),
             titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
-        
+    }
+}
+
+//MARK: - Action
+extension SearchBookCollectionViewCell {
+    func setupLinkLabelAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openLink))
+        linkLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func openLink() {
+        guard let url = URL(string: "https://www.example.com") else { return }
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 }

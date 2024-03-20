@@ -25,7 +25,6 @@ final class SearchViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.placeholder = "책을 검색해주세요"
-        searchBar.backgroundImage = UIImage()
         searchBar.delegate = self
         return searchBar
     }()
@@ -40,6 +39,8 @@ final class SearchViewController: UIViewController {
     private lazy var indicator: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorView.style = .large
+        indicatorView.color = .systemOrange
         return indicatorView
     }()
     
@@ -81,13 +82,11 @@ extension SearchViewController {
     private func search(with keyword: String?) {
         guard let keyword = keyword, !keyword.isEmpty else { return }
         
-        isDataLoading = true
-        indicator.startAnimating()
+        startDataLoading()
         
         searchBookRepository.searchBooks(query: keyword) { [weak self] result in
             DispatchQueue.main.async {
-                self?.isDataLoading = false
-                self?.indicator.stopAnimating()
+                self?.stopDataLoading()
                 
                 switch result {
                 case .success(let data):
@@ -113,6 +112,16 @@ extension SearchViewController {
     private func handleSearchErrorResult(_ error: Error) {
         let message = error.localizedDescription
         ErrorAlert.show(from: self, message: message)
+    }
+    
+    private func startDataLoading() {
+        isDataLoading = true
+        indicator.startAnimating()
+    }
+
+    private func stopDataLoading() {
+        isDataLoading = false
+        indicator.stopAnimating()
     }
 }
 
@@ -143,7 +152,6 @@ extension SearchViewController {
             searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             searchBar.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             searchBar.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            searchBar.heightAnchor.constraint(equalToConstant: 44),
             
             //CollectionView constraints
             collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
@@ -160,16 +168,13 @@ extension SearchViewController {
 
 // MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = true
-    }
-    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBookRepository.resetPage()
+        collectionViewDataSource.resetData()
         search(with: searchBar.text)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
         searchBar.text = nil
         searchBar.resignFirstResponder()
     }
