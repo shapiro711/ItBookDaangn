@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ItBookDaangn
+@testable import ItBookDaangn
 
 /**
  NetworkService Mock 객체

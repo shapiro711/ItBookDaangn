@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import ItBookDaangn
+@testable import ItBookDaangn
 
 /**
  SessionManager Mock 객체
@@ -19,9 +19,10 @@ import ItBookDaangn
 final class MockSessionManager: SessionManageable {
     var mockData: Data?
     var mockResponse: URLResponse?
-    var mockError: Error?
+    var mockError: Error? = nil
     
     func request(urlRequest: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+       
         completion(mockData, mockResponse, mockError)
     }
 }

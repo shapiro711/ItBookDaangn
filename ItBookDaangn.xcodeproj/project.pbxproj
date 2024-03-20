@@ -54,7 +54,8 @@
 		3FACA07C2BAAA89E009D253B /* SearchBookTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA07B2BAAA89E009D253B /* SearchBookTest.swift */; };
 		3FACA07F2BAAA8D7009D253B /* MockSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA07E2BAAA8D7009D253B /* MockSessionManager.swift */; };
 		3FACA0832BAAAB52009D253B /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0822BAAAB52009D253B /* MockNetworkService.swift */; };
-		3FACA0862BAAACC1009D253B /* MockBookDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0852BAAACC1009D253B /* MockBookDetailResponse.swift */; };
+		3FACA0862BAAACC1009D253B /* BookDetailMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0852BAAACC1009D253B /* BookDetailMockData.swift */; };
+		3FACA0882BAAADAF009D253B /* TestBookDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0872BAAADAF009D253B /* TestBookDetailRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,7 +127,8 @@
 		3FACA07B2BAAA89E009D253B /* SearchBookTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookTest.swift; sourceTree = "<group>"; };
 		3FACA07E2BAAA8D7009D253B /* MockSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSessionManager.swift; sourceTree = "<group>"; };
 		3FACA0822BAAAB52009D253B /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
-		3FACA0852BAAACC1009D253B /* MockBookDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBookDetailResponse.swift; sourceTree = "<group>"; };
+		3FACA0852BAAACC1009D253B /* BookDetailMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailMockData.swift; sourceTree = "<group>"; };
+		3FACA0872BAAADAF009D253B /* TestBookDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestBookDetailRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,7 +465,8 @@
 		3FACA0842BAAAC7A009D253B /* DetailBook */ = {
 			isa = PBXGroup;
 			children = (
-				3FACA0852BAAACC1009D253B /* MockBookDetailResponse.swift */,
+				3FACA0852BAAACC1009D253B /* BookDetailMockData.swift */,
+				3FACA0872BAAADAF009D253B /* TestBookDetailRepository.swift */,
 			);
 			path = DetailBook;
 			sourceTree = "<group>";
@@ -647,7 +650,8 @@
 				3FACA0832BAAAB52009D253B /* MockNetworkService.swift in Sources */,
 				3FACA07C2BAAA89E009D253B /* SearchBookTest.swift in Sources */,
 				3FACA07F2BAAA8D7009D253B /* MockSessionManager.swift in Sources */,
-				3FACA0862BAAACC1009D253B /* MockBookDetailResponse.swift in Sources */,
+				3FACA0882BAAADAF009D253B /* TestBookDetailRepository.swift in Sources */,
+				3FACA0862BAAACC1009D253B /* BookDetailMockData.swift in Sources */,
 				3F7DB0A02BA59339005A531B /* ItBookDaangnTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
