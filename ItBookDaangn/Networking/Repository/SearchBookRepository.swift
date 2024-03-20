@@ -30,7 +30,10 @@ final class SearchBookRepository: BookSearchable {
 
     /// 책 검색 실행
     func searchBooks(query: String, completion: @escaping (Result<[BookSearchResponse.Book], Error>) -> Void) {
-        guard pageInformation.canFetchNextPage else { return }
+        guard pageInformation.canFetchNextPage else {
+            completion(.failure(PageError.endPage))
+            return
+        }
         
         let currentPage = pageInformation.currentPage + 1
         let endpoint = SearchBookEndpoint.search(query: query, page: currentPage)
@@ -71,6 +74,7 @@ final class SearchBookRepository: BookSearchable {
     
     /// 페이지네이션 리셋
     func resetPage() {
+        pageInformation.fetchedBooksCount = 0
         pageInformation.canFetchNextPage = true
         pageInformation.currentPage = 0
     }

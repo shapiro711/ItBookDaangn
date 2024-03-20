@@ -25,3 +25,7 @@ struct PageInformation {
     var canFetchNextPage: Bool = true
     var fetchedBooksCount: Int = 0
 }
+
+enum PageError: Error {
+    case endPage
+}
