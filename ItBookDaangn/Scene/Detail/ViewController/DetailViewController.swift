@@ -31,6 +31,8 @@ final class DetailViewController: UIViewController {
     private lazy var indicator: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorView.style = .large
+        indicatorView.color = .systemOrange
         return indicatorView
     }()
     
@@ -62,17 +64,18 @@ final class DetailViewController: UIViewController {
     }
     
     private func registerCell() {
-        collectionView.register(DetailBookImageCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookImageCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookTitleCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookTitleCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookInformationCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookInformationCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookDescriptionCollectionViewCell.reuseIdentifier)
-        collectionView.register(DetailBookPdfCollectionViewCell.self, forCellWithReuseIdentifier: DetailBookPdfCollectionViewCell.reuseIdentifier)
+        collectionView.register(DetailBookImageCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.image.reuseIdentifier)
+        collectionView.register(DetailBookTitleCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.title.reuseIdentifier)
+        collectionView.register(DetailBookInformationCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.information.reuseIdentifier)
+        collectionView.register(DetailBookDescriptionCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.description.reuseIdentifier)
+        collectionView.register(DetailBookPdfCollectionViewCell.self, forCellWithReuseIdentifier: DetailCellType.pdf.reuseIdentifier)
     }
 }
 
 //MARK: - Networking
 extension DetailViewController {
     func fetchBookDetail() {
+        indicator.startAnimating()
         repository.fetchBookDetails(isbn13Identifier: identifier) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -81,6 +84,7 @@ extension DetailViewController {
                 case .failure(let error):
                     self?.handleFetchDetailError(error)
                 }
+                self?.indicator.stopAnimating()
             }
         }
     }
@@ -100,23 +104,29 @@ extension DetailViewController {
 extension DetailViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
+        title = "상세 정보"
         buildHierarachy()
         setupConstraint()
     }
     
     private func buildHierarachy() {
         view.addSubview(collectionView)
+        view.addSubview(indicator)
     }
     
     private func setupConstraint() {
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            //CollectionView constraints
+            //collectionView Constraints
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            
+            //indicator Constraints
+            indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
@@ -129,19 +139,7 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         }
         
         let width = collectionView.frame.width
-        
-        switch cellType {
-        case .image:
-            return CGSize(width: width, height: 300)
-        case .title:
-            return CGSize(width: width, height: 50)
-        case .information:
-            return CGSize(width: width, height: 130)
-        case .description:
-            return CGSize(width: width, height: 120)
-        case .pdf:
-            return CGSize(width: width, height: 500)
-        }
+        return CGSize(width: width, height: cellType.height)
     }
 }
 

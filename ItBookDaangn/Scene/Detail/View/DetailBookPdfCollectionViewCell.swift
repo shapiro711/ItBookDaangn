@@ -16,6 +16,7 @@ import PDFKit
  - Authors: 김도형
  */
 
+/// PDF 챕터 선택 Delegate
 protocol PDFCollectionViewCellDelegate: AnyObject {
     func pdfCellDidSelectChapter(_ cell: DetailBookPdfCollectionViewCell)
 }
@@ -32,9 +33,10 @@ final class DetailBookPdfCollectionViewCell: UICollectionViewCell {
     
     private lazy var selectChapterButton: UIButton = {
         let button = UIButton()
+        let buttonTitle = "챕터 선택"
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.orange, for: .normal)
-        button.setTitle("Select Chapter", for: .normal)
+        button.setTitle(buttonTitle, for: .normal)
         button.addTarget(self, action: #selector(selectChapterAction), for: .touchUpInside)
         return button
     }()
@@ -74,6 +76,7 @@ final class DetailBookPdfCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: - SetupUI
 extension DetailBookPdfCollectionViewCell {
     private func setupUI() {
         buildHierarchy()
@@ -88,15 +91,18 @@ extension DetailBookPdfCollectionViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            //pdfView Constraint
             pdfView.topAnchor.constraint(equalTo: contentView.topAnchor),
             pdfView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pdfView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             pdfView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
             
+            //selectChapterButton Constraint
             selectChapterButton.heightAnchor.constraint(equalToConstant: 44),
             selectChapterButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
             selectChapterButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             
+            //indicator Constraint
             indicator.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             indicator.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])

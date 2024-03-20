@@ -43,6 +43,7 @@ final class DetailBookDescriptionCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: - SetupUI
 extension DetailBookDescriptionCollectionViewCell {
     private func setupUI() {
         buildHierarchy()

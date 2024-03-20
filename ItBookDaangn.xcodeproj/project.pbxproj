@@ -50,6 +50,7 @@
 		3FACA0702BA99687009D253B /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA06F2BA99687009D253B /* ImageCacheManager.swift */; };
 		3FACA0742BA9C333009D253B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0732BA9C333009D253B /* AsyncImageView.swift */; };
 		3FACA0762BA9EEB6009D253B /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0752BA9EEB6009D253B /* ErrorAlert.swift */; };
+		3FACA07A2BAA89CB009D253B /* DetailCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FACA0792BAA89CB009D253B /* DetailCellType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		3FACA06F2BA99687009D253B /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		3FACA0732BA9C333009D253B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		3FACA0752BA9EEB6009D253B /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		3FACA0792BAA89CB009D253B /* DetailCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,8 +371,8 @@
 			isa = PBXGroup;
 			children = (
 				3FACA06B2BA98EDF009D253B /* DIContainer */,
-				3FACA06A2BA98ECC009D253B /* View */,
 				3FACA0012BA7CDAF009D253B /* ViewController */,
+				3FACA06A2BA98ECC009D253B /* View */,
 				3FACA0002BA7CDA6009D253B /* Model */,
 			);
 			path = Detail;
@@ -380,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				3FACA00C2BA80BA5009D253B /* DetailBookModel.swift */,
+				3FACA0792BAA89CB009D253B /* DetailCellType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -586,6 +589,7 @@
 				3F7DB0D42BA69BB6005A531B /* BookDetailResponse.swift in Sources */,
 				3F7DB0C62BA5D501005A531B /* HttpMethod.swift in Sources */,
 				3F44EE582BA6EF9900163606 /* UICollectionViewCell + ReuseIdentifier.swift in Sources */,
+				3FACA07A2BAA89CB009D253B /* DetailCellType.swift in Sources */,
 				3F44EE532BA6E5E400163606 /* SearchCollectionViewDataSource.swift in Sources */,
 				3FACA0702BA99687009D253B /* ImageCacheManager.swift in Sources */,
 				3F44EE4D2BA6B32100163606 /* DecodingError.swift in Sources */,

@@ -15,33 +15,6 @@ import UIKit
  - Authors: 김도형
  */
 
-enum DetailCellType: Int, CaseIterable {
-    case image
-    case title
-    case information
-    case description
-    case pdf
-    
-    var reuseIdentifier: String {
-           switch self {
-           case .image:
-               return DetailBookImageCollectionViewCell.reuseIdentifier
-           case .title:
-               return DetailBookTitleCollectionViewCell.reuseIdentifier
-           case .information:
-               return DetailBookInformationCollectionViewCell.reuseIdentifier
-           case .description:
-               return DetailBookDescriptionCollectionViewCell.reuseIdentifier
-           case .pdf:
-               return DetailBookPdfCollectionViewCell.reuseIdentifier
-           }
-       }
-    
-    var indexRow: Int {
-        return self.rawValue
-    }
-}
-
 final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     private var data: DetailBookModel?
     private weak var pdfCellDelegate: PDFCollectionViewCellDelegate?
@@ -58,32 +31,14 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.reuseIdentifier, for: indexPath)
         
-        switch cellType {
-        case .image:
-            if let cell = cell as? DetailBookImageCollectionViewCell {
-                cell.configure(by: data?.imageUrl)
-            }
-        case .title:
-            if let cell = cell as? DetailBookTitleCollectionViewCell {
-                cell.configure(by: data)
-            }
-        case .information:
-            if let cell = cell as? DetailBookInformationCollectionViewCell {
-                cell.configure(by: data)
-            }
-        case .description:
-            if let cell = cell as? DetailBookDescriptionCollectionViewCell {
-                cell.configure(by: data)
-            }
-        case .pdf:
-            if let cell = cell as? DetailBookPdfCollectionViewCell {
-                cell.delegate = self.pdfCellDelegate
-            }
-        }
+        configureCell(cell, for: cellType)
         
         return cell
     }
-    
+}
+
+//MARK: - Interface
+extension DetailCollectionViewDataSource {
     func setupData(by model: DetailBookModel) {
         self.data = model
     }
@@ -95,5 +50,28 @@ final class DetailCollectionViewDataSource: NSObject, UICollectionViewDataSource
     
     func setupDelegate(_ delegate: PDFCollectionViewCellDelegate) {
         self.pdfCellDelegate = delegate
+    }
+}
+
+//MARK: - Configure
+extension DetailCollectionViewDataSource {
+    private func configureCell(_ cell: UICollectionViewCell, for type: DetailCellType) {
+        switch type {
+        case .image:
+            let imageCell = cell as? DetailBookImageCollectionViewCell
+            imageCell?.configure(by: data?.imageUrl)
+        case .title:
+            let titleCell = cell as? DetailBookTitleCollectionViewCell
+            titleCell?.configure(by: data)
+        case .information:
+            let infoCell = cell as? DetailBookInformationCollectionViewCell
+            infoCell?.configure(by: data)
+        case .description:
+            let descriptionCell = cell as? DetailBookDescriptionCollectionViewCell
+            descriptionCell?.configure(by: data)
+        case .pdf:
+            let pdfCell = cell as? DetailBookPdfCollectionViewCell
+            pdfCell?.delegate = pdfCellDelegate
+        }
     }
 }

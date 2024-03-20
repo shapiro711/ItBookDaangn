@@ -17,6 +17,8 @@ import UIKit
 
 final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
     //MARK: - Property
+    private var linkUrl: URL?
+    
     private lazy var informationStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -28,8 +30,8 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
     private lazy var identifierStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
+        stackView.axis = .vertical
+        stackView.spacing = 2
         return stackView
     }()
     
@@ -78,6 +80,7 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
     private lazy var linkLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isUserInteractionEnabled = true
         label.font = .preferredFont(forTextStyle: .caption1)
         label.textColor = .blue
         label.text = "링크"
@@ -97,8 +100,6 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         label.font = .preferredFont(forTextStyle: .caption1)
         return label
     }()
-    
-    
     
     //MARK: - Initializer
     override init(frame: CGRect) {
@@ -122,18 +123,20 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
         priceLabel.text = "가격:" + model.price
         isbn10IdentifierLabel.text = "isbn10:" + model.isbn10
         isbn13IdentifierLabel.text = "isbn13:" + model.isbn13
+        linkUrl = model.linkUrl
     }
 }
 
+//MARK: - SetupUI
 extension DetailBookInformationCollectionViewCell {
     private func setupUI() {
         buildHierarchy()
         setupConstraints()
+        setupLinkLabelAction()
     }
     
     private func buildHierarchy() {
         contentView.addSubview(informationStackView)
-        
         
         informationStackView.addArrangedSubview(priceLabel)
         informationStackView.addArrangedSubview(ahtorLabel)
@@ -141,11 +144,12 @@ extension DetailBookInformationCollectionViewCell {
         informationStackView.addArrangedSubview(pageLabel)
         informationStackView.addArrangedSubview(yearLabel)
         informationStackView.addArrangedSubview(ratingLabel)
-        
         informationStackView.addArrangedSubview(identifierStackView)
+        informationStackView.addArrangedSubview(linkLabel)
         
         identifierStackView.addArrangedSubview(isbn10IdentifierLabel)
         identifierStackView.addArrangedSubview(isbn13IdentifierLabel)
+        
     }
     
     private func setupConstraints() {
@@ -154,6 +158,20 @@ extension DetailBookInformationCollectionViewCell {
             informationStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             informationStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
-        
+    }
+}
+
+//MARK: - Action
+extension DetailBookInformationCollectionViewCell {
+    func setupLinkLabelAction() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openLink))
+        linkLabel.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func openLink() {
+        guard let linkUrl = linkUrl else { return }
+        if UIApplication.shared.canOpenURL(linkUrl) {
+            UIApplication.shared.open(linkUrl)
+        }
     }
 }

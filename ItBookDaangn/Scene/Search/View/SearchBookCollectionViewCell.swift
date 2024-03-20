@@ -17,6 +17,8 @@ import UIKit
 
 final class SearchBookCollectionViewCell: UICollectionViewCell {
     //MARK: - Property
+    private var linkUrl: URL?
+    
     private lazy var thumbnailImageView: AsyncImageView = {
         let imageView = AsyncImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,11 +89,7 @@ final class SearchBookCollectionViewCell: UICollectionViewCell {
             thumbnailImageView.loadImage(from: imageUrl, placeholder: placeHolder)
         }
         
-        if model.linkUrl != nil {
-            linkLabel.isHidden = false
-        } else {
-            linkLabel.isHidden = true
-        }
+        linkUrl = model.linkUrl
     }
 }
 
@@ -105,25 +103,29 @@ extension SearchBookCollectionViewCell {
     private func buildHierarchy() {
         contentView.addSubview(thumbnailImageView)
         contentView.addSubview(titleStackView)
+        contentView.addSubview(linkLabel)
         
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(subtitleLabel)
         titleStackView.addArrangedSubview(identifierLabel)
-        titleStackView.addArrangedSubview(linkLabel)
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            //thumbnailImageView constraints
+            //thumbnailImageView Constraints
             thumbnailImageView.heightAnchor.constraint(equalToConstant: 120),
             thumbnailImageView.widthAnchor.constraint(equalToConstant: 90),
             thumbnailImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             
-            //titleStackView constraints
+            //titleStackView Constraints
             titleStackView.topAnchor.constraint(equalTo: thumbnailImageView.topAnchor),
             titleStackView.leadingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor, constant: 8),
-            titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
+            titleStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            
+            //linkLabel Constraints
+            linkLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            linkLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
         ])
     }
 }
@@ -136,9 +138,9 @@ extension SearchBookCollectionViewCell {
     }
     
     @objc func openLink() {
-        guard let url = URL(string: "https://www.example.com") else { return }
-        if UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
+        guard let linkUrl = linkUrl else { return }
+        if UIApplication.shared.canOpenURL(linkUrl) {
+            UIApplication.shared.open(linkUrl)
         }
     }
 }

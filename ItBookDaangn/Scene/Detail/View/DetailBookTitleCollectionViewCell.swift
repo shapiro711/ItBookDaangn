@@ -5,7 +5,6 @@
 //  Created by Kim Do hyung on 3/18/24.
 //
 
-
 import UIKit
 
 /**
@@ -62,6 +61,7 @@ final class DetailBookTitleCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: - SetupUI
 extension DetailBookTitleCollectionViewCell {
     private func setupUI() {
         buildHierarchy()
