@@ -125,6 +125,7 @@ final class DetailBookInformationCollectionViewCell: UICollectionViewCell {
     }
 }
 
+//MARK: - SetupUI
 extension DetailBookInformationCollectionViewCell {
     private func setupUI() {
         buildHierarchy()
@@ -133,7 +134,6 @@ extension DetailBookInformationCollectionViewCell {
     
     private func buildHierarchy() {
         contentView.addSubview(informationStackView)
-        
         
         informationStackView.addArrangedSubview(priceLabel)
         informationStackView.addArrangedSubview(ahtorLabel)
@@ -154,6 +154,5 @@ extension DetailBookInformationCollectionViewCell {
             informationStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             informationStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8)
         ])
-        
     }
 }

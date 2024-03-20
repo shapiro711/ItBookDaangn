@@ -31,6 +31,8 @@ final class DetailViewController: UIViewController {
     private lazy var indicator: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorView.style = .large
+        indicatorView.color = .systemOrange
         return indicatorView
     }()
     
