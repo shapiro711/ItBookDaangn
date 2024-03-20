@@ -33,9 +33,10 @@ final class DetailBookPdfCollectionViewCell: UICollectionViewCell {
     
     private lazy var selectChapterButton: UIButton = {
         let button = UIButton()
+        let buttonTitle = "챕터 선택"
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.orange, for: .normal)
-        button.setTitle("Select Chapter", for: .normal)
+        button.setTitle(buttonTitle, for: .normal)
         button.addTarget(self, action: #selector(selectChapterAction), for: .touchUpInside)
         return button
     }()

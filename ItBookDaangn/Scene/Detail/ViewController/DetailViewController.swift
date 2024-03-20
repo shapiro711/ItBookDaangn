@@ -75,6 +75,7 @@ final class DetailViewController: UIViewController {
 //MARK: - Networking
 extension DetailViewController {
     func fetchBookDetail() {
+        indicator.startAnimating()
         repository.fetchBookDetails(isbn13Identifier: identifier) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -83,6 +84,7 @@ extension DetailViewController {
                 case .failure(let error):
                     self?.handleFetchDetailError(error)
                 }
+                self?.indicator.stopAnimating()
             }
         }
     }
