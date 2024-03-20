@@ -48,7 +48,7 @@ enum DetailCellType: Int, CaseIterable {
         case .title:
             return 50
         case .information:
-            return 130
+            return 170
         case .description:
             return 120
         case .pdf:
